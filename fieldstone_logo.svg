@@ -11,9 +11,9 @@
     </clipPath>
   </defs>
 
-  <!-- TOP FACE (gold) -->
-  <polygon points="46,3 81,21 46,39 11,21" fill="#C4963A"/>
-  <g clip-path="url(#clip-top)" stroke="rgba(0,0,0,0.1)" stroke-width="0.7" fill="none">
+  <!-- TOP FACE (off-white) -->
+  <polygon points="46,3 81,21 46,39 11,21" fill="#E2EBF4"/>
+  <g clip-path="url(#clip-top)" stroke="rgba(0,0,0,0.06)" stroke-width="0.7" fill="none">
     <line x1="11" y1="30" x2="46" y2="3"/>
     <line x1="28" y1="39" x2="63" y2="3"/>
     <line x1="46" y1="39" x2="72" y2="9"/>
