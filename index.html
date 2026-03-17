@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fieldstone Oversight | Construction Consulting & Owner Representation</title>
+  <meta name="description" content="Independent construction oversight for property owners, developers, and investors in Delaware, Philadelphia, and South Jersey." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── Variables ─────────────────────────────────── */
+    :root {
+      --navy:       #1B3058;
+      --navy-dark:  #122240;
+      --navy-light: #243f6e;
+      --gold:       #C4963A;
+      --gold-light: #d9aa52;
+      --slate:      #4A6080;
+      --slate-light:#6b85a0;
+      --off-white:  #F4F6F9;
+      --white:      #ffffff;
+      --text:       #1a2332;
+      --text-muted: #5a6a7e;
+      --border:     #dde3ec;
+    }
+
+    /* ─── Reset ─────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+    }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ─── Nav ────────────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .nav-logo img { height: 48px; width: auto; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--slate);
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--navy); }
+    .nav-links .btn-nav {
+      background: var(--gold);
+      color: var(--white);
+      padding: 10px 22px;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 0.875rem;
+      transition: background 0.2s;
+    }
+    .nav-links .btn-nav:hover { background: var(--gold-light); color: var(--white); }
+
+    /* ─── Hero ───────────────────────────────────────── */
+    .hero {
+      background: var(--navy);
+      padding: 100px 5% 90px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .hero-eyebrow {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 18px;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 22px;
+    }
+    .hero h1 span { color: var(--gold); }
+    .hero p {
+      font-size: 1.1rem;
+      color: #a8bcd4;
+      max-width: 480px;
+      margin-bottom: 36px;
+      line-height: 1.75;
+    }
+    .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--white);
+      padding: 14px 28px;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: background 0.2s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--gold-light); }
+    .btn-outline {
+      border: 2px solid rgba(255,255,255,0.3);
+      color: var(--white);
+      padding: 14px 28px;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: border-color 0.2s, color 0.2s;
+      display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--white); }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .stat-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 28px 24px;
+    }
+    .stat-card .number {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .stat-card .label {
+      font-size: 0.85rem;
+      color: #a8bcd4;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    /* ─── Trust Bar ──────────────────────────────────── */
+    .trust-bar {
+      background: var(--navy-dark);
+      padding: 18px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: #a8bcd4;
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .trust-item::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+    }
+
+    /* ─── Section Base ───────────────────────────────── */
+    section { padding: 90px 5%; }
+    .section-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .section-title {
+      font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.25;
+      margin-bottom: 20px;
+    }
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 580px;
+      line-height: 1.75;
+    }
+
+    /* ─── Problem Section ────────────────────────────── */
+    .problem { background: var(--off-white); }
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      margin-top: 50px;
+    }
+    .problem-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+    .problem-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 20px 22px;
+      background: var(--white);
+      border-radius: 8px;
+      border-left: 3px solid var(--gold);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+    .problem-icon {
+      font-size: 1.3rem;
+      line-height: 1;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .problem-list li strong {
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+    .problem-list li span {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+    .problem-callout {
+      background: var(--navy);
+      border-radius: 12px;
+      padding: 44px 38px;
+      color: var(--white);
+    }
+    .problem-callout h3 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+    .problem-callout h3 span { color: var(--gold); }
+    .problem-callout p {
+      color: #a8bcd4;
+      line-height: 1.75;
+      margin-bottom: 28px;
+      font-size: 0.97rem;
+    }
+    .problem-callout .btn-primary { display: inline-block; }
+
+    /* ─── Services Section ───────────────────────────── */
+    .services-header { margin-bottom: 50px; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .service-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 32px 28px;
+      transition: box-shadow 0.2s, border-color 0.2s, transform 0.2s;
+    }
+    .service-card:hover {
+      box-shadow: 0 8px 24px rgba(27,48,88,0.1);
+      border-color: var(--gold);
+      transform: translateY(-3px);
+    }
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(196,150,58,0.1);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+    }
+    .service-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .service-card p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+    .service-card .learn-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 18px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--gold);
+      transition: gap 0.2s;
+    }
+    .service-card:hover .learn-more { gap: 10px; }
+
+    /* 5-card last row centering */
+    .services-grid .service-card:nth-child(4) { grid-column: 1 / 2; }
+    .services-grid .service-card:nth-child(5) { grid-column: 2 / 3; }
+
+    /* ─── Why Fieldstone ─────────────────────────────── */
+    .why { background: var(--off-white); }
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: center;
+      margin-top: 50px;
+    }
+    .why-points { display: flex; flex-direction: column; gap: 28px; }
+    .why-point { display: flex; gap: 20px; align-items: flex-start; }
+    .why-point-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--navy);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .why-point h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+    .why-point p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+    .why-credentials {
+      background: var(--navy);
+      border-radius: 12px;
+      padding: 44px 38px;
+    }
+    .credential-item {
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .credential-item:last-child { border-bottom: none; }
+    .credential-item .check {
+      width: 28px;
+      height: 28px;
+      background: rgba(196,150,58,0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+    .credential-item span {
+      font-size: 0.92rem;
+      color: #c8d8e8;
+      font-weight: 500;
+    }
+
+    /* ─── CTA Banner ─────────────────────────────────── */
+    .cta-banner {
+      background: var(--navy);
+      padding: 80px 5%;
+      text-align: center;
+    }
+    .cta-banner h2 {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    .cta-banner h2 span { color: var(--gold); }
+    .cta-banner p {
+      font-size: 1.05rem;
+      color: #a8bcd4;
+      margin-bottom: 36px;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* ─── Footer ─────────────────────────────────────── */
+    footer {
+      background: var(--navy-dark);
+      padding: 50px 5% 30px;
+    }
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 40px;
+      padding-bottom: 36px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      flex-wrap: wrap;
+    }
+    .footer-brand img { height: 40px; margin-bottom: 14px; }
+    .footer-brand p {
+      font-size: 0.85rem;
+      color: #7a95b0;
+      max-width: 260px;
+      line-height: 1.65;
+    }
+    .footer-links h4 {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links ul a {
+      font-size: 0.88rem;
+      color: #7a95b0;
+      transition: color 0.2s;
+    }
+    .footer-links ul a:hover { color: var(--white); }
+    .footer-contact h4 {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .footer-contact p {
+      font-size: 0.88rem;
+      color: #7a95b0;
+      line-height: 1.8;
+    }
+    .footer-contact a { color: #a8bcd4; transition: color 0.2s; }
+    .footer-contact a:hover { color: var(--white); }
+    .footer-bottom {
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-bottom p { font-size: 0.8rem; color: #4a6070; }
+
+    /* ─── Responsive ─────────────────────────────────── */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; gap: 50px; }
+      .hero-stats { grid-template-columns: 1fr 1fr; }
+      .problem-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .services-grid .service-card:nth-child(4),
+      .services-grid .service-card:nth-child(5) { grid-column: auto; }
+      .why-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .hero { padding: 60px 5%; }
+      .hero-stats { grid-template-columns: 1fr 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .services-grid .service-card:nth-child(4),
+      .services-grid .service-card:nth-child(5) { grid-column: auto; }
+      .trust-bar { gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── Nav ─────────────────────────────────────── -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <img src="fieldstone_logo.svg" alt="Fieldstone Oversight" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" class="btn-nav">Get Started</a></li>
+    </ul>
+  </nav>
+
+  <!-- ─── Hero ─────────────────────────────────────── -->
+  <section class="hero">
+    <div class="hero-content">
+      <p class="hero-eyebrow">Serving within 50 miles of Claymont, DE &mdash; Extended service area available</p>
+      <h1>Your Construction Project Deserves <span>Professional Oversight</span></h1>
+      <p>Independent construction management and owner representation for developers, investors, and property owners, without the cost of a full in-house construction management team.</p>
+      <div class="hero-ctas">
+        <a href="contact.html" class="btn-primary">Get a Free Consultation</a>
+        <a href="services.html" class="btn-outline">View Services</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-card">
+        <div class="number">10+</div>
+        <div class="label">Years Commercial Construction Experience</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">$150M</div>
+        <div class="label">Largest Project Managed</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">$20M</div>
+        <div class="label">Max Project Budget We Serve</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">50mi</div>
+        <div class="label">Service Radius — Extended Coverage Available</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Trust Bar ─────────────────────────────────── -->
+  <div class="trust-bar">
+    <span class="trust-item">Owner Representation</span>
+    <span class="trust-item">Pay Application Review</span>
+    <span class="trust-item">Schedule Analysis</span>
+    <span class="trust-item">Bid Leveling</span>
+    <span class="trust-item">Pre-Construction Consulting</span>
+  </div>
+
+  <!-- ─── Problem ───────────────────────────────────── -->
+  <section class="problem">
+    <p class="section-label">The Problem</p>
+    <h2 class="section-title">Contractors Work for Themselves.<br>Who's Working for You?</h2>
+    <div class="problem-grid">
+      <ul class="problem-list">
+        <li>
+          <span class="problem-icon">💰</span>
+          <div>
+            <strong>Overbilling on Pay Applications</strong>
+            <span>Contractors routinely bill ahead of work completed. Without a trained eye, you won't catch it until it's too late.</span>
+          </div>
+        </li>
+        <li>
+          <span class="problem-icon">📅</span>
+          <div>
+            <strong>Schedule Manipulation</strong>
+            <span>Inflated schedules, phantom milestones, and delay claims are standard tactics. Independent review exposes them.</span>
+          </div>
+        </li>
+        <li>
+          <span class="problem-icon">📋</span>
+          <div>
+            <strong>Change Order Abuse</strong>
+            <span>Poorly scoped contracts give contractors leverage to issue change orders for work that should have been included.</span>
+          </div>
+        </li>
+        <li>
+          <span class="problem-icon">🔍</span>
+          <div>
+            <strong>Quality You Can't Verify</strong>
+            <span>Without construction knowledge, you can't assess workmanship, material compliance, or code adherence.</span>
+          </div>
+        </li>
+      </ul>
+      <div class="problem-callout">
+        <h3>Fieldstone acts as your <span>construction expert</span> in the field.</h3>
+        <p>We bring commercial-grade project oversight to smaller developers, investors, and property owners — the kind of professional oversight that large developers have always had access to.</p>
+        <a href="services.html" class="btn-primary">See How We Help</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Services ─────────────────────────────────── -->
+  <section class="services">
+    <div class="services-header">
+      <p class="section-label">What We Do</p>
+      <h2 class="section-title">Construction Oversight Services</h2>
+      <p class="section-sub">From pre-construction through final closeout, we keep your project on budget, on schedule, and built right.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🏗️</div>
+        <h3>Owner Representation</h3>
+        <p>Full project oversight on your behalf. Contract review, schedule monitoring, pay application review, contractor communication, and owner reporting throughout the project lifecycle.</p>
+        <a href="services.html" class="learn-more">Learn more →</a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📊</div>
+        <h3>Pay Application Review</h3>
+        <p>Verify percent complete, validate stored materials, audit contractor billing, and review the schedule of values. Catch overbilling before you write the check.</p>
+        <a href="services.html" class="learn-more">Learn more →</a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📅</div>
+        <h3>Schedule Review</h3>
+        <p>Critical path review, delay analysis, and schedule realism assessment. Know if your contractor's timeline is achievable or a setup for claims down the road.</p>
+        <a href="services.html" class="learn-more">Learn more →</a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📸</div>
+        <h3>Construction Progress Reports</h3>
+        <p>Site documentation, progress photos, issue tracking, and safety observations delivered in a clear, professional report after each site visit.</p>
+        <a href="services.html" class="learn-more">Learn more →</a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔎</div>
+        <h3>Pre-Construction Consulting</h3>
+        <p>Contractor bid evaluation, budget review, risk identification, and contract guidance before a single shovel hits the ground.</p>
+        <a href="services.html" class="learn-more">Learn more →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Why Fieldstone ────────────────────────────── -->
+  <section class="why">
+    <p class="section-label">Why Fieldstone</p>
+    <h2 class="section-title">Real Field Experience.<br>Working for You.</h2>
+    <div class="why-grid">
+      <div class="why-points">
+        <div class="why-point">
+          <div class="why-point-icon">🏢</div>
+          <div>
+            <h4>Commercial-Grade Experience</h4>
+            <p>Our founder is a Commercial Superintendent with 10+ years managing school, healthcare, and commercial projects ranging from $10M to $150M. That experience is now working for you.</p>
+          </div>
+        </div>
+        <div class="why-point">
+          <div class="why-point-icon">🤝</div>
+          <div>
+            <h4>Truly Independent</h4>
+            <p>We are not affiliated with any contractor, GC, or subcontractor. Our only obligation is to you. That independence is the whole point.</p>
+          </div>
+        </div>
+        <div class="why-point">
+          <div class="why-point-icon">💡</div>
+          <div>
+            <h4>Affordable for Smaller Projects</h4>
+            <p>Professional owner representation has historically been accessible only to large developers. We priced our services to protect investors and owners on projects of all sizes.</p>
+          </div>
+        </div>
+        <div class="why-point">
+          <div class="why-point-icon">📍</div>
+          <div>
+            <h4>Locally Focused</h4>
+            <p>Based in Claymont, DE with a 50-mile service radius covering Delaware, Philadelphia, and South Jersey. Extended coverage available. Ask us.</p>
+          </div>
+        </div>
+      </div>
+      <div class="why-credentials">
+        <div class="credential-item">
+          <div class="check">✓</div>
+          <span>10+ years commercial construction experience</span>
+        </div>
+        <div class="credential-item">
+          <div class="check">✓</div>
+          <span>Commercial Superintendent background</span>
+        </div>
+        <div class="credential-item">
+          <div class="check">✓</div>
+          <span>Projects managed up to $150M</span>
+        </div>
+        <div class="credential-item">
+          <div class="check">✓</div>
+          <span>School, healthcare & commercial sector experience</span>
+        </div>
+        <div class="credential-item">
+          <div class="check">✓</div>
+          <span>No contractor affiliations. 100% owner-side.</span>
+        </div>
+        <div class="credential-item">
+          <div class="check">✓</div>
+          <span>50-mile service radius from Claymont, DE. Extended coverage available.</span>
+        </div>
+        <div class="credential-item">
+          <div class="check">✓</div>
+          <span>Projects from small renos to $20M budgets</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CTA Banner ────────────────────────────────── -->
+  <section class="cta-banner">
+    <h2>Not Sure If You Need Oversight? <span>Let's Talk.</span></h2>
+    <p>A free 20-minute call is all it takes to find out if Fieldstone can protect your project and your investment.</p>
+    <div class="cta-actions">
+      <a href="contact.html" class="btn-primary">Schedule a Free Consultation</a>
+      <a href="services.html" class="btn-outline">View Pricing</a>
+    </div>
+  </section>
+
+  <!-- ─── Footer ────────────────────────────────────── -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="fieldstone_logo_light.svg" alt="Fieldstone Oversight" />
+        <p>Independent construction oversight for property owners, developers, and investors in the Delaware Valley.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <p>
+          <a href="mailto:brennan@fieldstoneoversight.com">brennan@fieldstoneoversight.com</a><br /><br />
+          Delaware · Philadelphia<br />South Jersey
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Fieldstone Oversight. All rights reserved.</p>
+      <p>fieldstoneoversight.com</p>
+    </div>
+  </footer>
+
+</body>
+</html>

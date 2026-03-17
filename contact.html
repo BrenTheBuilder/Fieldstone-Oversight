@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Fieldstone Oversight</title>
+  <meta name="description" content="Get in touch with Fieldstone Oversight. Tell us about your project and we'll get back to you within one business day." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy:       #1B3058;
+      --navy-dark:  #122240;
+      --navy-light: #243f6e;
+      --gold:       #C4963A;
+      --gold-light: #d9aa52;
+      --slate:      #4A6080;
+      --slate-light:#6b85a0;
+      --off-white:  #F4F6F9;
+      --white:      #ffffff;
+      --text:       #1a2332;
+      --text-muted: #5a6a7e;
+      --border:     #dde3ec;
+      --error:      #c0392b;
+      --success:    #1e7e4e;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ─── Nav ─────────────────────────────── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--white); border-bottom: 1px solid var(--border);
+      padding: 0 5%; display: flex; align-items: center;
+      justify-content: space-between; height: 72px;
+    }
+    .nav-logo img { height: 48px; width: auto; }
+    .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+    .nav-links a { font-size: 0.9rem; font-weight: 500; color: var(--slate); letter-spacing: 0.02em; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--navy); }
+    .nav-links .btn-nav {
+      background: var(--gold); color: var(--white);
+      padding: 10px 22px; border-radius: 4px;
+      font-weight: 600; font-size: 0.875rem; transition: background 0.2s;
+    }
+    .nav-links .btn-nav:hover { background: var(--gold-light); color: var(--white); }
+
+    /* ─── Page Header ─────────────────────── */
+    .page-header {
+      background: var(--navy);
+      padding: 70px 5% 60px;
+      text-align: center;
+    }
+    .page-header .eyebrow {
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 14px;
+    }
+    .page-header h1 {
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 800; color: var(--white); margin-bottom: 16px;
+    }
+    .page-header p {
+      font-size: 1.05rem; color: #a8bcd4;
+      max-width: 500px; margin: 0 auto; line-height: 1.75;
+    }
+
+    /* ─── Contact Body ────────────────────── */
+    .contact-body {
+      padding: 80px 5%;
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 70px;
+      align-items: start;
+    }
+
+    /* ─── Form ────────────────────────────── */
+    .form-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 44px 40px;
+      box-shadow: 0 4px 24px rgba(27,48,88,0.07);
+    }
+    .form-card h2 {
+      font-size: 1.3rem; font-weight: 800;
+      color: var(--navy); margin-bottom: 6px;
+    }
+    .form-card .form-sub {
+      font-size: 0.88rem; color: var(--text-muted);
+      margin-bottom: 32px; line-height: 1.6;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 18px;
+    }
+    .field.full { grid-column: 1 / -1; }
+    label {
+      font-size: 0.82rem; font-weight: 600;
+      color: var(--navy); letter-spacing: 0.02em;
+    }
+    label .required { color: var(--gold); margin-left: 2px; }
+    input, select, textarea {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.92rem;
+      color: var(--text);
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 11px 14px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+      width: 100%;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--navy);
+      box-shadow: 0 0 0 3px rgba(27,48,88,0.08);
+    }
+    select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234A6080' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+    textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
+    .btn-submit {
+      width: 100%;
+      background: var(--gold);
+      color: var(--white);
+      border: none;
+      border-radius: 6px;
+      padding: 15px 28px;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 8px;
+    }
+    .btn-submit:hover { background: var(--gold-light); }
+    .form-note {
+      font-size: 0.78rem; color: var(--text-muted);
+      text-align: center; margin-top: 14px; line-height: 1.6;
+    }
+
+    /* ─── Success Message ─────────────────── */
+    .success-message {
+      display: none;
+      background: #edfaf3;
+      border: 1px solid #a3d9bc;
+      border-radius: 8px;
+      padding: 20px 22px;
+      margin-top: 20px;
+      font-size: 0.92rem;
+      color: var(--success);
+      font-weight: 500;
+      text-align: center;
+    }
+
+    /* ─── Sidebar ─────────────────────────── */
+    .contact-sidebar { display: flex; flex-direction: column; gap: 24px; }
+
+    .info-card {
+      background: var(--off-white);
+      border-radius: 10px;
+      padding: 28px 26px;
+      border: 1px solid var(--border);
+    }
+    .info-card h3 {
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 16px;
+    }
+    .info-item {
+      display: flex; align-items: flex-start;
+      gap: 14px; padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .info-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .info-icon {
+      width: 36px; height: 36px; flex-shrink: 0;
+      background: var(--navy);
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.95rem;
+    }
+    .info-item strong {
+      display: block; font-size: 0.87rem;
+      font-weight: 700; color: var(--navy); margin-bottom: 3px;
+    }
+    .info-item span, .info-item a {
+      font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;
+    }
+    .info-item a:hover { color: var(--navy); }
+
+    .expect-card {
+      background: var(--navy);
+      border-radius: 10px;
+      padding: 28px 26px;
+    }
+    .expect-card h3 {
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 20px;
+    }
+    .expect-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+    .expect-list li {
+      display: flex; align-items: flex-start; gap: 12px;
+      font-size: 0.87rem; color: #a8bcd4; line-height: 1.55;
+    }
+    .expect-num {
+      width: 22px; height: 22px; flex-shrink: 0;
+      background: rgba(196,150,58,0.2);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.72rem; font-weight: 800; color: var(--gold);
+      margin-top: 1px;
+    }
+
+    .service-area-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 28px 26px;
+    }
+    .service-area-card h3 {
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 14px;
+    }
+    .service-area-card p {
+      font-size: 0.87rem; color: var(--text-muted); line-height: 1.7;
+    }
+    .service-area-card p strong { color: var(--navy); }
+
+    /* ─── Footer ──────────────────────────── */
+    footer { background: var(--navy-dark); padding: 50px 5% 30px; }
+    .footer-top {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      gap: 40px; padding-bottom: 36px;
+      border-bottom: 1px solid rgba(255,255,255,0.1); flex-wrap: wrap;
+    }
+    .footer-brand img { height: 40px; margin-bottom: 14px; }
+    .footer-brand p { font-size: 0.85rem; color: #7a95b0; max-width: 260px; line-height: 1.65; }
+    .footer-links h4, .footer-contact h4 {
+      font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 16px;
+    }
+    .footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links ul a { font-size: 0.88rem; color: #7a95b0; transition: color 0.2s; }
+    .footer-links ul a:hover { color: var(--white); }
+    .footer-contact p { font-size: 0.88rem; color: #7a95b0; line-height: 1.8; }
+    .footer-contact a { color: #a8bcd4; transition: color 0.2s; }
+    .footer-contact a:hover { color: var(--white); }
+    .footer-bottom {
+      padding-top: 24px; display: flex;
+      justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+    }
+    .footer-bottom p { font-size: 0.8rem; color: #4a6070; }
+
+    /* ─── Responsive ──────────────────────── */
+    @media (max-width: 960px) {
+      .contact-body { grid-template-columns: 1fr; gap: 40px; }
+      .contact-sidebar { order: -1; }
+      .info-card, .expect-card, .service-area-card { max-width: 100%; }
+    }
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .form-card { padding: 28px 22px; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── Nav ─────────────────────────────── -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <img src="fieldstone_logo.svg" alt="Fieldstone Oversight" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" class="btn-nav active">Get Started</a></li>
+    </ul>
+  </nav>
+
+  <!-- ─── Page Header ─────────────────────── -->
+  <div class="page-header">
+    <p class="eyebrow">Get in Touch</p>
+    <h1>Let's Talk About Your Project</h1>
+    <p>Tell us what you're working on. We'll respond within one business day.</p>
+  </div>
+
+  <!-- ─── Contact Body ──────────────────────  -->
+  <section class="contact-body">
+
+    <!-- Form -->
+    <div class="form-card">
+      <h2>Send Us a Message</h2>
+      <p class="form-sub">Fill out the form below and Brennan will get back to you directly.</p>
+
+      <!--
+        Formspree handles form submissions with no backend required.
+        Steps to activate:
+          1. Create a free account at formspree.io
+          2. Create a new form and copy your form ID
+          3. Replace YOUR_FORM_ID below with your actual ID
+        Example: action="https://formspree.io/f/abcd1234"
+      -->
+      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" id="contact-form">
+
+        <div class="form-row">
+          <div class="field">
+            <label for="first-name">First Name <span class="required">*</span></label>
+            <input type="text" id="first-name" name="first_name" placeholder="John" required />
+          </div>
+          <div class="field">
+            <label for="last-name">Last Name <span class="required">*</span></label>
+            <input type="text" id="last-name" name="last_name" placeholder="Smith" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="email">Email Address <span class="required">*</span></label>
+            <input type="email" id="email" name="email" placeholder="john@example.com" required />
+          </div>
+          <div class="field">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="(555) 555-5555" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="service">Service Needed <span class="required">*</span></label>
+          <select id="service" name="service" required>
+            <option value="" disabled selected>Select a service...</option>
+            <option value="residential-site-visit">Residential Site Visit ($250)</option>
+            <option value="commercial-site-visit">Commercial Site Visit ($350)</option>
+            <option value="pay-app-residential">Pay Application Review - Residential ($500)</option>
+            <option value="pay-app-commercial">Pay Application Review - Commercial ($1,000)</option>
+            <option value="consultation-risk-memo">Consultation &amp; Risk Memo ($600)</option>
+            <option value="bid-leveling">Bid Leveling ($1,500)</option>
+            <option value="owner-rep">Owner Representation (Custom Quote)</option>
+            <option value="not-sure">Not Sure / General Inquiry</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="project">Tell Us About Your Project <span class="required">*</span></label>
+          <textarea id="project" name="project" placeholder="Brief description of your project: location, type of work, current stage, and what you need help with." required></textarea>
+        </div>
+
+        <div class="field">
+          <label for="referral">How Did You Hear About Us?</label>
+          <select id="referral" name="referral">
+            <option value="" disabled selected>Select one...</option>
+            <option value="google">Google Search</option>
+            <option value="referral">Referral from someone I know</option>
+            <option value="social-media">Social Media</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <!-- Honeypot spam field - hidden from real users -->
+        <input type="text" name="_gotcha" style="display:none" />
+
+        <button type="submit" class="btn-submit">Send Message</button>
+        <p class="form-note">We respond within one business day. Your information is never shared or sold.</p>
+        <div class="success-message" id="success-msg">Message sent. Brennan will be in touch with you shortly.</div>
+      </form>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="contact-sidebar">
+
+      <div class="info-card">
+        <h3>Contact Information</h3>
+        <div class="info-item">
+          <div class="info-icon">✉️</div>
+          <div>
+            <strong>Email</strong>
+            <a href="mailto:brennan@fieldstoneoversight.com">brennan@fieldstoneoversight.com</a>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">📍</div>
+          <div>
+            <strong>Based In</strong>
+            <span>Claymont, Delaware</span>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">🗺️</div>
+          <div>
+            <strong>Service Area</strong>
+            <span>Within 50 miles of Claymont, DE. Extended coverage available upon request.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="expect-card">
+        <h3>What Happens Next</h3>
+        <ul class="expect-list">
+          <li>
+            <div class="expect-num">1</div>
+            <span>Brennan reviews your message and responds within one business day.</span>
+          </li>
+          <li>
+            <div class="expect-num">2</div>
+            <span>A quick call to talk through your project, answer questions, and confirm the right service.</span>
+          </li>
+          <li>
+            <div class="expect-num">3</div>
+            <span>We get to work. You get clear documentation and a professional you can actually reach.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="service-area-card">
+        <h3>Service Area</h3>
+        <p>Fieldstone Oversight serves clients within <strong>50 miles of Claymont, Delaware,</strong> covering most of Delaware, Philadelphia, and South Jersey.</p>
+        <p style="margin-top: 10px;">Outside that radius? Reach out anyway. Extended service area engagements are available depending on project scope.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── Footer ────────────────────────────── -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="fieldstone_logo_light.svg" alt="Fieldstone Oversight" />
+        <p>Independent construction oversight for property owners, developers, and investors in the Delaware Valley.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <p>
+          <a href="mailto:brennan@fieldstoneoversight.com">brennan@fieldstoneoversight.com</a><br /><br />
+          Claymont, DE<br />50-mile service radius<br />Extended coverage available
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Fieldstone Oversight. All rights reserved.</p>
+      <p>fieldstoneoversight.com</p>
+    </div>
+  </footer>
+
+  <script>
+    // Show success message on form submit (Formspree handles the actual POST)
+    const form = document.getElementById('contact-form');
+    const successMsg = document.getElementById('success-msg');
+    form.addEventListener('submit', function() {
+      setTimeout(function() {
+        successMsg.style.display = 'block';
+      }, 800);
+    });
+  </script>
+
+</body>
+</html>
