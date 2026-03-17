@@ -7,50 +7,55 @@
   <meta name="description" content="Independent construction oversight for property owners, developers, and investors in Delaware, Philadelphia, and South Jersey." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
-    /* ─── Variables ─────────────────────────────────── */
+    /* ─── Variables ──────────────────────────────────── */
     :root {
-      --navy:       #1B3058;
-      --navy-dark:  #122240;
-      --navy-light: #243f6e;
-      --gold:       #C4963A;
-      --gold-light: #d9aa52;
-      --slate:      #4A6080;
-      --slate-light:#6b85a0;
-      --off-white:  #F4F6F9;
+      --dark:       #0F1923;
+      --dark-2:     #162030;
+      --dark-3:     #1e2d3d;
+      --blue:       #2D7DD2;
+      --blue-light: #4d97e8;
+      --blue-dim:   rgba(45,125,210,0.15);
       --white:      #ffffff;
-      --text:       #1a2332;
-      --text-muted: #5a6a7e;
-      --border:     #dde3ec;
+      --off-white:  #f0f4f8;
+      --text-dim:   rgba(255,255,255,0.55);
+      --text-mid:   rgba(255,255,255,0.75);
+      --border:     rgba(255,255,255,0.08);
     }
 
-    /* ─── Reset ─────────────────────────────────────── */
+    /* ─── Reset ──────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
       font-family: 'Inter', sans-serif;
-      color: var(--text);
-      background: var(--white);
+      background: var(--dark);
+      color: var(--white);
       line-height: 1.6;
+      overflow-x: hidden;
     }
     img { display: block; max-width: 100%; }
     a { text-decoration: none; color: inherit; }
 
     /* ─── Nav ────────────────────────────────────────── */
     nav {
-      position: sticky;
+      position: fixed;
       top: 0;
+      left: 0;
+      right: 0;
       z-index: 100;
-      background: var(--white);
-      border-bottom: 1px solid var(--border);
       padding: 0 5%;
+      height: 72px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 72px;
+      background: rgba(15,25,35,0.7);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.3s;
     }
-    .nav-logo img { height: 48px; width: auto; }
+    .nav-logo img { height: 44px; width: auto; }
     .nav-links {
       display: flex;
       align-items: center;
@@ -58,109 +63,165 @@
       list-style: none;
     }
     .nav-links a {
-      font-size: 0.9rem;
+      font-size: 0.875rem;
       font-weight: 500;
-      color: var(--slate);
-      letter-spacing: 0.02em;
+      color: var(--text-mid);
+      letter-spacing: 0.01em;
       transition: color 0.2s;
     }
-    .nav-links a:hover { color: var(--navy); }
+    .nav-links a:hover { color: var(--white); }
     .nav-links .btn-nav {
-      background: var(--gold);
+      background: var(--blue);
       color: var(--white);
       padding: 10px 22px;
-      border-radius: 4px;
+      border-radius: 6px;
       font-weight: 600;
       font-size: 0.875rem;
-      transition: background 0.2s;
+      transition: background 0.2s, transform 0.2s;
     }
-    .nav-links .btn-nav:hover { background: var(--gold-light); color: var(--white); }
+    .nav-links .btn-nav:hover { background: var(--blue-light); transform: translateY(-1px); }
 
     /* ─── Hero ───────────────────────────────────────── */
     .hero {
-      background: var(--navy);
-      padding: 100px 5% 90px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
       align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 140px 5% 100px;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=80');
+      background-size: cover;
+      background-position: center 30%;
+      z-index: 0;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(15,25,35,0.75) 0%,
+        rgba(15,25,35,0.55) 40%,
+        rgba(15,25,35,0.85) 100%
+      );
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 860px;
     }
     .hero-eyebrow {
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 18px;
+      color: var(--blue-light);
+      margin-bottom: 24px;
+      padding: 6px 16px;
+      border: 1px solid rgba(45,125,210,0.4);
+      border-radius: 100px;
+      background: rgba(45,125,210,0.1);
     }
     .hero h1 {
-      font-size: clamp(2rem, 3.5vw, 3rem);
-      font-weight: 800;
+      font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
       color: var(--white);
-      line-height: 1.2;
-      margin-bottom: 22px;
+      margin-bottom: 28px;
     }
-    .hero h1 span { color: var(--gold); }
-    .hero p {
-      font-size: 1.1rem;
-      color: #a8bcd4;
-      max-width: 480px;
-      margin-bottom: 36px;
+    .hero h1 .accent { color: var(--blue-light); }
+    .hero-sub {
+      font-size: clamp(1rem, 1.8vw, 1.2rem);
+      color: var(--text-mid);
+      max-width: 560px;
+      margin: 0 auto 44px;
       line-height: 1.75;
+      font-weight: 400;
     }
-    .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
     .btn-primary {
-      background: var(--gold);
+      background: var(--blue);
       color: var(--white);
-      padding: 14px 28px;
-      border-radius: 4px;
+      padding: 16px 32px;
+      border-radius: 8px;
       font-weight: 700;
       font-size: 0.95rem;
-      transition: background 0.2s;
+      letter-spacing: 0.01em;
       display: inline-block;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
     }
-    .btn-primary:hover { background: var(--gold-light); }
-    .btn-outline {
-      border: 2px solid rgba(255,255,255,0.3);
+    .btn-primary:hover {
+      background: var(--blue-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(45,125,210,0.4);
+    }
+    .btn-ghost {
       color: var(--white);
-      padding: 14px 28px;
-      border-radius: 4px;
+      padding: 16px 32px;
+      border-radius: 8px;
       font-weight: 600;
       font-size: 0.95rem;
-      transition: border-color 0.2s, color 0.2s;
+      border: 1px solid rgba(255,255,255,0.25);
       display: inline-block;
+      transition: border-color 0.2s, background 0.2s, transform 0.2s;
     }
-    .btn-outline:hover { border-color: var(--white); }
-
-    .hero-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
+    .btn-ghost:hover {
+      border-color: rgba(255,255,255,0.6);
+      background: rgba(255,255,255,0.05);
+      transform: translateY(-2px);
     }
-    .stat-card {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 8px;
-      padding: 28px 24px;
-    }
-    .stat-card .number {
-      font-size: 2.2rem;
-      font-weight: 800;
-      color: var(--gold);
-      line-height: 1;
-      margin-bottom: 8px;
-    }
-    .stat-card .label {
-      font-size: 0.85rem;
-      color: #a8bcd4;
+    .scroll-indicator {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-dim);
+      font-size: 0.72rem;
       font-weight: 500;
-      line-height: 1.4;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      animation: fadeInUp 1s ease 1.5s both;
+    }
+    .scroll-line {
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(1.15); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translate(-50%, 16px); }
+      to { opacity: 1; transform: translate(-50%, 0); }
     }
 
-    /* ─── Trust Bar ──────────────────────────────────── */
-    .trust-bar {
-      background: var(--navy-dark);
-      padding: 18px 5%;
+    /* ─── Trust Strip ────────────────────────────────── */
+    .trust-strip {
+      background: var(--dark-2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 5%;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -168,328 +229,421 @@
       flex-wrap: wrap;
     }
     .trust-item {
-      font-size: 0.82rem;
-      font-weight: 500;
-      color: #a8bcd4;
-      letter-spacing: 0.05em;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-dim);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
     }
-    .trust-item::before {
-      content: '';
-      display: inline-block;
-      width: 6px;
-      height: 6px;
-      background: var(--gold);
+    .trust-dot {
+      width: 5px;
+      height: 5px;
+      background: var(--blue);
       border-radius: 50%;
+      flex-shrink: 0;
     }
 
+    /* ─── Scroll Animations ──────────────────────────── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+    .delay-4 { transition-delay: 0.4s; }
+
     /* ─── Section Base ───────────────────────────────── */
-    section { padding: 90px 5%; }
+    .section { padding: 100px 5%; }
     .section-label {
-      font-size: 0.78rem;
+      font-size: 0.72rem;
       font-weight: 700;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 14px;
+      color: var(--blue-light);
+      margin-bottom: 16px;
     }
     .section-title {
-      font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
       font-weight: 800;
-      color: var(--navy);
-      line-height: 1.25;
+      color: var(--white);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
       margin-bottom: 20px;
     }
     .section-sub {
       font-size: 1.05rem;
-      color: var(--text-muted);
-      max-width: 580px;
+      color: var(--text-mid);
+      max-width: 560px;
       line-height: 1.75;
     }
+    .container { max-width: 1200px; margin: 0 auto; }
 
-    /* ─── Problem Section ────────────────────────────── */
-    .problem { background: var(--off-white); }
-    .problem-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-      margin-top: 50px;
+    /* ─── Bold Statement ─────────────────────────────── */
+    .bold-statement {
+      background: var(--dark);
+      padding: 100px 5%;
+      text-align: center;
     }
-    .problem-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
-    .problem-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
-      padding: 20px 22px;
-      background: var(--white);
-      border-radius: 8px;
-      border-left: 3px solid var(--gold);
-      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-    }
-    .problem-icon {
-      font-size: 1.3rem;
-      line-height: 1;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-    .problem-list li strong {
-      display: block;
-      font-size: 0.95rem;
+    .bold-statement .eyebrow {
+      font-size: 0.75rem;
       font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 4px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue-light);
+      margin-bottom: 24px;
     }
-    .problem-list li span {
-      font-size: 0.88rem;
-      color: var(--text-muted);
-    }
-    .problem-callout {
-      background: var(--navy);
-      border-radius: 12px;
-      padding: 44px 38px;
+    .bold-statement h2 {
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      font-weight: 900;
+      line-height: 1.12;
+      letter-spacing: -0.025em;
+      max-width: 820px;
+      margin: 0 auto 28px;
       color: var(--white);
     }
-    .problem-callout h3 {
-      font-size: 1.5rem;
-      font-weight: 800;
-      margin-bottom: 16px;
+    .bold-statement h2 em {
+      font-style: normal;
+      color: var(--blue-light);
+    }
+    .bold-statement p {
+      font-size: 1.1rem;
+      color: var(--text-mid);
+      max-width: 580px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    /* ─── Problem Cards ──────────────────────────────── */
+    .problem { background: var(--dark-2); }
+    .problem-header { margin-bottom: 56px; }
+    .problem-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .problem-card {
+      background: var(--dark-2);
+      padding: 44px 40px;
+      transition: background 0.2s;
+    }
+    .problem-card:hover { background: var(--dark-3); }
+    .problem-number {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--blue);
+      margin-bottom: 20px;
+    }
+    .problem-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 12px;
       line-height: 1.3;
     }
-    .problem-callout h3 span { color: var(--gold); }
-    .problem-callout p {
-      color: #a8bcd4;
+    .problem-card p {
+      font-size: 0.92rem;
+      color: var(--text-dim);
       line-height: 1.75;
-      margin-bottom: 28px;
-      font-size: 0.97rem;
     }
-    .problem-callout .btn-primary { display: inline-block; }
 
-    /* ─── Services Section ───────────────────────────── */
-    .services-header { margin-bottom: 50px; }
+    /* ─── Services ───────────────────────────────────── */
+    .services { background: var(--dark); }
+    .services-header { margin-bottom: 56px; }
     .services-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      gap: 1px;
+      background: var(--border);
+      border-radius: 12px;
+      overflow: hidden;
     }
     .service-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 32px 28px;
-      transition: box-shadow 0.2s, border-color 0.2s, transform 0.2s;
-    }
-    .service-card:hover {
-      box-shadow: 0 8px 24px rgba(27,48,88,0.1);
-      border-color: var(--gold);
-      transform: translateY(-3px);
-    }
-    .service-icon {
-      width: 48px;
-      height: 48px;
-      background: rgba(196,150,58,0.1);
-      border-radius: 8px;
+      background: var(--dark);
+      padding: 44px 36px;
+      position: relative;
+      transition: background 0.2s;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
+      flex-direction: column;
+    }
+    .service-card:hover { background: var(--dark-2); }
+    .service-number {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--blue);
       margin-bottom: 20px;
     }
     .service-card h3 {
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 10px;
+      color: var(--white);
+      margin-bottom: 12px;
+      line-height: 1.3;
     }
     .service-card p {
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      line-height: 1.65;
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      line-height: 1.75;
+      flex: 1;
     }
-    .service-card .learn-more {
+    .service-arrow {
+      margin-top: 24px;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      margin-top: 18px;
+      gap: 8px;
       font-size: 0.85rem;
       font-weight: 600;
-      color: var(--gold);
-      transition: gap 0.2s;
+      color: var(--blue-light);
+      opacity: 0;
+      transform: translateX(-8px);
+      transition: opacity 0.2s, transform 0.2s;
     }
-    .service-card:hover .learn-more { gap: 10px; }
+    .service-card:hover .service-arrow {
+      opacity: 1;
+      transform: translateX(0);
+    }
 
-    /* 5-card last row centering */
-    .services-grid .service-card:nth-child(4) { grid-column: 1 / 2; }
-    .services-grid .service-card:nth-child(5) { grid-column: 2 / 3; }
+    /* 5th card spans 2 columns to center it visually if last row has 2 */
+    .services-grid .service-card:nth-child(4),
+    .services-grid .service-card:nth-child(5) {
+      /* stay as 1 column each — grid handles the rest */
+    }
 
-    /* ─── Why Fieldstone ─────────────────────────────── */
-    .why { background: var(--off-white); }
-    .why-grid {
+    /* ─── Stats ──────────────────────────────────────── */
+    .stats {
+      background: var(--dark-2);
+      padding: 100px 5%;
+    }
+    .stats-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 70px;
-      align-items: center;
-      margin-top: 50px;
-    }
-    .why-points { display: flex; flex-direction: column; gap: 28px; }
-    .why-point { display: flex; gap: 20px; align-items: flex-start; }
-    .why-point-icon {
-      width: 44px;
-      height: 44px;
-      background: var(--navy);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-      flex-shrink: 0;
-    }
-    .why-point h4 {
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 6px;
-    }
-    .why-point p {
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      line-height: 1.65;
-    }
-    .why-credentials {
-      background: var(--navy);
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
       border-radius: 12px;
-      padding: 44px 38px;
+      overflow: hidden;
     }
-    .credential-item {
-      padding: 18px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-    .credential-item:last-child { border-bottom: none; }
-    .credential-item .check {
-      width: 28px;
-      height: 28px;
-      background: rgba(196,150,58,0.2);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--gold);
-      font-size: 0.85rem;
-      flex-shrink: 0;
-    }
-    .credential-item span {
-      font-size: 0.92rem;
-      color: #c8d8e8;
-      font-weight: 500;
-    }
-
-    /* ─── CTA Banner ─────────────────────────────────── */
-    .cta-banner {
-      background: var(--navy);
-      padding: 80px 5%;
+    .stat-item {
+      background: var(--dark-2);
+      padding: 48px 36px;
       text-align: center;
     }
-    .cta-banner h2 {
+    .stat-number {
+      font-size: clamp(2.4rem, 4vw, 3.4rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: 10px;
+    }
+    .stat-number .stat-accent { color: var(--blue-light); }
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      font-weight: 500;
+      line-height: 1.5;
+    }
+
+    /* ─── Founder ────────────────────────────────────── */
+    .founder { background: var(--dark); }
+    .founder-grid {
+      display: grid;
+      grid-template-columns: 420px 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .founder-photo {
+      position: relative;
+    }
+    .founder-photo img {
+      width: 100%;
+      border-radius: 12px;
+      object-fit: cover;
+      aspect-ratio: 4/5;
+    }
+    .founder-photo::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--blue), transparent 60%);
+      z-index: -1;
+    }
+    .founder-text .eyebrow {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue-light);
+      margin-bottom: 16px;
+    }
+    .founder-text h2 {
       font-size: clamp(1.8rem, 3vw, 2.6rem);
       font-weight: 800;
       color: var(--white);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+    }
+    .founder-text p {
+      font-size: 1rem;
+      color: var(--text-mid);
+      line-height: 1.8;
       margin-bottom: 16px;
     }
-    .cta-banner h2 span { color: var(--gold); }
-    .cta-banner p {
-      font-size: 1.05rem;
-      color: #a8bcd4;
-      margin-bottom: 36px;
-      max-width: 520px;
-      margin-left: auto;
-      margin-right: auto;
+    .founder-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 32px;
     }
-    .cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .tag {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--blue-light);
+      padding: 7px 14px;
+      border: 1px solid rgba(45,125,210,0.35);
+      border-radius: 100px;
+      background: rgba(45,125,210,0.08);
+    }
+
+    /* ─── CTA ────────────────────────────────────────── */
+    .cta {
+      background: linear-gradient(135deg, var(--blue) 0%, #1a5fa8 100%);
+      padding: 100px 5%;
+      text-align: center;
+    }
+    .cta h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    .cta p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.8);
+      max-width: 500px;
+      margin: 0 auto 40px;
+      line-height: 1.75;
+    }
+    .cta-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-white {
+      background: var(--white);
+      color: var(--blue);
+      padding: 16px 32px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: inline-block;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-white:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    }
+    .btn-white-outline {
+      border: 2px solid rgba(255,255,255,0.4);
+      color: var(--white);
+      padding: 16px 32px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      display: inline-block;
+      transition: border-color 0.2s, background 0.2s, transform 0.2s;
+    }
+    .btn-white-outline:hover {
+      border-color: rgba(255,255,255,0.8);
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-2px);
+    }
 
     /* ─── Footer ─────────────────────────────────────── */
     footer {
-      background: var(--navy-dark);
-      padding: 50px 5% 30px;
+      background: #080f16;
+      padding: 60px 5% 32px;
     }
-    .footer-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 40px;
-      padding-bottom: 36px;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      flex-wrap: wrap;
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      gap: 60px;
+      align-items: start;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border);
     }
-    .footer-brand img { height: 40px; margin-bottom: 14px; }
+    .footer-brand img { height: 38px; margin-bottom: 16px; }
     .footer-brand p {
-      font-size: 0.85rem;
-      color: #7a95b0;
-      max-width: 260px;
-      line-height: 1.65;
-    }
-    .footer-links h4 {
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 16px;
-    }
-    .footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .footer-links ul a {
       font-size: 0.88rem;
-      color: #7a95b0;
+      color: var(--text-dim);
+      max-width: 260px;
+      line-height: 1.7;
+    }
+    .footer-col h4 {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 18px;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-col ul a {
+      font-size: 0.88rem;
+      color: var(--text-dim);
       transition: color 0.2s;
     }
-    .footer-links ul a:hover { color: var(--white); }
-    .footer-contact h4 {
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 16px;
-    }
-    .footer-contact p {
-      font-size: 0.88rem;
-      color: #7a95b0;
-      line-height: 1.8;
-    }
-    .footer-contact a { color: #a8bcd4; transition: color 0.2s; }
-    .footer-contact a:hover { color: var(--white); }
+    .footer-col ul a:hover { color: var(--white); }
     .footer-bottom {
-      padding-top: 24px;
+      padding-top: 28px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
       gap: 12px;
     }
-    .footer-bottom p { font-size: 0.8rem; color: #4a6070; }
+    .footer-bottom p {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.25);
+    }
 
     /* ─── Responsive ─────────────────────────────────── */
-    @media (max-width: 900px) {
-      .hero { grid-template-columns: 1fr; gap: 50px; }
-      .hero-stats { grid-template-columns: 1fr 1fr; }
-      .problem-grid { grid-template-columns: 1fr; }
+    @media (max-width: 960px) {
+      .problem-cards { grid-template-columns: 1fr; }
       .services-grid { grid-template-columns: 1fr 1fr; }
-      .services-grid .service-card:nth-child(4),
-      .services-grid .service-card:nth-child(5) { grid-column: auto; }
-      .why-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .founder-grid { grid-template-columns: 1fr; }
+      .founder-photo { max-width: 400px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 40px; }
     }
-    @media (max-width: 600px) {
+    @media (max-width: 640px) {
+      nav { padding: 0 4%; }
       .nav-links { display: none; }
-      .hero { padding: 60px 5%; }
-      .hero-stats { grid-template-columns: 1fr 1fr; }
+      .hero { padding: 120px 4% 80px; }
+      .section { padding: 72px 4%; }
+      .bold-statement { padding: 72px 4%; }
       .services-grid { grid-template-columns: 1fr; }
-      .services-grid .service-card:nth-child(4),
-      .services-grid .service-card:nth-child(5) { grid-column: auto; }
-      .trust-bar { gap: 24px; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .problem-cards { grid-template-columns: 1fr; }
+      .trust-strip { gap: 24px; }
     }
   </style>
 </head>
@@ -498,7 +652,7 @@
   <!-- ─── Nav ─────────────────────────────────────── -->
   <nav>
     <a href="index.html" class="nav-logo">
-      <img src="fieldstone_logo.svg" alt="Fieldstone Oversight" />
+      <img src="fieldstone_logo_light.svg" alt="Fieldstone Oversight" />
     </a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
@@ -510,214 +664,182 @@
 
   <!-- ─── Hero ─────────────────────────────────────── -->
   <section class="hero">
+    <div class="hero-bg"></div>
     <div class="hero-content">
-      <h1>Your Construction Project Deserves <span>Professional Oversight</span></h1>
-      <p>Independent construction management and owner representation for developers, investors, and property owners, without the cost of a full in-house construction management team.</p>
+      <div class="hero-eyebrow">Independent Construction Oversight</div>
+      <h1>Your Contractor Works for Themselves.<br><span class="accent">We Work for You.</span></h1>
+      <p class="hero-sub">Professional construction oversight and owner representation for developers, investors, and property owners in Delaware, Philadelphia, and South Jersey.</p>
       <div class="hero-ctas">
         <a href="contact.html" class="btn-primary">Get a Free Consultation</a>
-        <a href="services.html" class="btn-outline">View Services</a>
+        <a href="services.html" class="btn-ghost">See Our Services</a>
       </div>
     </div>
-    <div class="hero-stats">
-      <div class="stat-card">
-        <div class="number">10+</div>
-        <div class="label">Years Commercial Construction Experience</div>
-      </div>
-      <div class="stat-card">
-        <div class="number">$150M</div>
-        <div class="label">Largest Project Managed</div>
-      </div>
-      <div class="stat-card">
-        <div class="number">$20M</div>
-        <div class="label">Max Project Budget We Serve</div>
-      </div>
-      <div class="stat-card">
-        <div class="number">50mi</div>
-        <div class="label">Service Radius — Extended Coverage Available</div>
-      </div>
+    <div class="scroll-indicator">
+      <div class="scroll-line"></div>
+      Scroll
     </div>
   </section>
 
-  <!-- ─── Trust Bar ─────────────────────────────────── -->
-  <div class="trust-bar">
-    <span class="trust-item">Owner Representation</span>
-    <span class="trust-item">Pay Application Review</span>
-    <span class="trust-item">Schedule Analysis</span>
-    <span class="trust-item">Bid Leveling</span>
-    <span class="trust-item">Pre-Construction Consulting</span>
+  <!-- ─── Trust Strip ───────────────────────────────── -->
+  <div class="trust-strip">
+    <div class="trust-item"><span class="trust-dot"></span>Owner Representation</div>
+    <div class="trust-item"><span class="trust-dot"></span>Pay Application Review</div>
+    <div class="trust-item"><span class="trust-dot"></span>Schedule Analysis</div>
+    <div class="trust-item"><span class="trust-dot"></span>Bid Leveling</div>
+    <div class="trust-item"><span class="trust-dot"></span>Pre-Construction Consulting</div>
+  </div>
+
+  <!-- ─── Bold Statement ────────────────────────────── -->
+  <div class="bold-statement">
+    <p class="eyebrow">The Reality</p>
+    <h2>Contractors are incentivized to <em>maximize their profit.</em> Not protect yours.</h2>
+    <p>Overbilling, inflated schedules, and vague change orders are standard tactics. Without a trained eye on your project, you won't catch it until the money is gone. Fieldstone is that trained eye.</p>
   </div>
 
   <!-- ─── Problem ───────────────────────────────────── -->
-  <section class="problem">
-    <p class="section-label">The Problem</p>
-    <h2 class="section-title">Contractors Work for Themselves.<br>Who's Working for You?</h2>
-    <div class="problem-grid">
-      <ul class="problem-list">
-        <li>
-          <span class="problem-icon">💰</span>
-          <div>
-            <strong>Overbilling on Pay Applications</strong>
-            <span>Contractors routinely bill ahead of work completed. Without a trained eye, you won't catch it until it's too late.</span>
-          </div>
-        </li>
-        <li>
-          <span class="problem-icon">📅</span>
-          <div>
-            <strong>Schedule Manipulation</strong>
-            <span>Inflated schedules, phantom milestones, and delay claims are standard tactics. Independent review exposes them.</span>
-          </div>
-        </li>
-        <li>
-          <span class="problem-icon">📋</span>
-          <div>
-            <strong>Change Order Abuse</strong>
-            <span>Poorly scoped contracts give contractors leverage to issue change orders for work that should have been included.</span>
-          </div>
-        </li>
-        <li>
-          <span class="problem-icon">🔍</span>
-          <div>
-            <strong>Quality You Can't Verify</strong>
-            <span>Without construction knowledge, you can't assess workmanship, material compliance, or code adherence.</span>
-          </div>
-        </li>
-      </ul>
-      <div class="problem-callout">
-        <h3>Fieldstone acts as your <span>construction expert</span> in the field.</h3>
-        <p>We bring commercial-grade project oversight to smaller developers, investors, and property owners — the kind of professional oversight that large developers have always had access to.</p>
-        <a href="services.html" class="btn-primary">See How We Help</a>
+  <section class="section problem">
+    <div class="container">
+      <div class="problem-header fade-up">
+        <p class="section-label">What Owners Face</p>
+        <h2 class="section-title">The problems we solve.</h2>
+      </div>
+      <div class="problem-cards">
+        <div class="problem-card fade-up delay-1">
+          <p class="problem-number">01</p>
+          <h3>Overbilling on Pay Applications</h3>
+          <p>Contractors routinely bill ahead of work completed. Without someone who knows what to look for, you approve invoices for work that isn't done and materials that aren't on site.</p>
+        </div>
+        <div class="problem-card fade-up delay-2">
+          <p class="problem-number">02</p>
+          <h3>Schedule Manipulation</h3>
+          <p>Inflated schedules, phantom milestones, and delay claims are standard tactics. An independent schedule review exposes them before they become costly disputes.</p>
+        </div>
+        <div class="problem-card fade-up delay-3">
+          <p class="problem-number">03</p>
+          <h3>Change Order Abuse</h3>
+          <p>Poorly scoped contracts give contractors leverage to issue change orders for work that should have been included. We catch these before you sign.</p>
+        </div>
+        <div class="problem-card fade-up delay-4">
+          <p class="problem-number">04</p>
+          <h3>Quality You Cannot Verify</h3>
+          <p>Without construction knowledge, you cannot assess workmanship, material compliance, or code adherence. We can. And we document everything.</p>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- ─── Services ─────────────────────────────────── -->
-  <section class="services">
-    <div class="services-header">
-      <p class="section-label">What We Do</p>
-      <h2 class="section-title">Construction Oversight Services</h2>
-      <p class="section-sub">From pre-construction through final closeout, we keep your project on budget, on schedule, and built right.</p>
-    </div>
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-icon">🏗️</div>
-        <h3>Owner Representation</h3>
-        <p>Full project oversight on your behalf. Contract review, schedule monitoring, pay application review, contractor communication, and owner reporting throughout the project lifecycle.</p>
-        <a href="services.html" class="learn-more">Learn more →</a>
+  <section class="section services">
+    <div class="container">
+      <div class="services-header fade-up">
+        <p class="section-label">What We Do</p>
+        <h2 class="section-title">Construction oversight services.</h2>
+        <p class="section-sub">From pre-construction through final closeout, we keep your project on budget, on schedule, and built right.</p>
       </div>
-      <div class="service-card">
-        <div class="service-icon">📊</div>
-        <h3>Pay Application Review</h3>
-        <p>Verify percent complete, validate stored materials, audit contractor billing, and review the schedule of values. Catch overbilling before you write the check.</p>
-        <a href="services.html" class="learn-more">Learn more →</a>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">📅</div>
-        <h3>Schedule Review</h3>
-        <p>Critical path review, delay analysis, and schedule realism assessment. Know if your contractor's timeline is achievable or a setup for claims down the road.</p>
-        <a href="services.html" class="learn-more">Learn more →</a>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">📸</div>
-        <h3>Construction Progress Reports</h3>
-        <p>Site documentation, progress photos, issue tracking, and safety observations delivered in a clear, professional report after each site visit.</p>
-        <a href="services.html" class="learn-more">Learn more →</a>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">🔎</div>
-        <h3>Pre-Construction Consulting</h3>
-        <p>Contractor bid evaluation, budget review, risk identification, and contract guidance before a single shovel hits the ground.</p>
-        <a href="services.html" class="learn-more">Learn more →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── Why Fieldstone ────────────────────────────── -->
-  <section class="why">
-    <p class="section-label">Why Fieldstone</p>
-    <h2 class="section-title">Real Field Experience.<br>Working for You.</h2>
-    <div class="why-grid">
-      <div class="why-points">
-        <div class="why-point">
-          <div class="why-point-icon">🏢</div>
-          <div>
-            <h4>Commercial-Grade Experience</h4>
-            <p>Our founder is a Commercial Superintendent with 10+ years managing school, healthcare, and commercial projects ranging from $10M to $150M. That experience is now working for you.</p>
-          </div>
+      <div class="services-grid">
+        <div class="service-card fade-up delay-1">
+          <p class="service-number">01</p>
+          <h3>Owner Representation</h3>
+          <p>Full project oversight on your behalf. Contract review, schedule monitoring, pay application review, contractor communication, and owner reporting throughout the project lifecycle.</p>
+          <a href="services.html" class="service-arrow">Learn more &rarr;</a>
         </div>
-        <div class="why-point">
-          <div class="why-point-icon">🤝</div>
-          <div>
-            <h4>Truly Independent</h4>
-            <p>We are not affiliated with any contractor, GC, or subcontractor. Our only obligation is to you. That independence is the whole point.</p>
-          </div>
+        <div class="service-card fade-up delay-2">
+          <p class="service-number">02</p>
+          <h3>Pay Application Review</h3>
+          <p>Verify percent complete, validate stored materials, audit contractor billing, and review the schedule of values. Catch overbilling before you write the check.</p>
+          <a href="services.html" class="service-arrow">Learn more &rarr;</a>
         </div>
-        <div class="why-point">
-          <div class="why-point-icon">💡</div>
-          <div>
-            <h4>Affordable for Smaller Projects</h4>
-            <p>Professional owner representation has historically been accessible only to large developers. We priced our services to protect investors and owners on projects of all sizes.</p>
-          </div>
+        <div class="service-card fade-up delay-3">
+          <p class="service-number">03</p>
+          <h3>Schedule Review</h3>
+          <p>Critical path review, delay analysis, and schedule realism assessment. Know if your contractor's timeline is achievable or a setup for claims down the road.</p>
+          <a href="services.html" class="service-arrow">Learn more &rarr;</a>
         </div>
-        <div class="why-point">
-          <div class="why-point-icon">📍</div>
-          <div>
-            <h4>Locally Focused</h4>
-            <p>Based in Claymont, DE with a 50-mile service radius covering Delaware, Philadelphia, and South Jersey. Extended coverage available. Ask us.</p>
-          </div>
+        <div class="service-card fade-up delay-2">
+          <p class="service-number">04</p>
+          <h3>Construction Progress Reports</h3>
+          <p>Site documentation, progress photos, issue tracking, and safety observations delivered in a clear, professional report after every site visit.</p>
+          <a href="services.html" class="service-arrow">Learn more &rarr;</a>
         </div>
-      </div>
-      <div class="why-credentials">
-        <div class="credential-item">
-          <div class="check">✓</div>
-          <span>10+ years commercial construction experience</span>
-        </div>
-        <div class="credential-item">
-          <div class="check">✓</div>
-          <span>Commercial Superintendent background</span>
-        </div>
-        <div class="credential-item">
-          <div class="check">✓</div>
-          <span>Projects managed up to $150M</span>
-        </div>
-        <div class="credential-item">
-          <div class="check">✓</div>
-          <span>School, healthcare & commercial sector experience</span>
-        </div>
-        <div class="credential-item">
-          <div class="check">✓</div>
-          <span>No contractor affiliations. 100% owner-side.</span>
-        </div>
-        <div class="credential-item">
-          <div class="check">✓</div>
-          <span>50-mile service radius from Claymont, DE. Extended coverage available.</span>
-        </div>
-        <div class="credential-item">
-          <div class="check">✓</div>
-          <span>Projects from small renos to $20M budgets</span>
+        <div class="service-card fade-up delay-3">
+          <p class="service-number">05</p>
+          <h3>Pre-Construction Consulting</h3>
+          <p>Contractor bid evaluation, budget review, risk identification, and contract guidance before a single shovel hits the ground.</p>
+          <a href="services.html" class="service-arrow">Learn more &rarr;</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ─── CTA Banner ────────────────────────────────── -->
-  <section class="cta-banner">
-    <h2>Not Sure If You Need Oversight? <span>Let's Talk.</span></h2>
-    <p>A free 20-minute call is all it takes to find out if Fieldstone can protect your project and your investment.</p>
-    <div class="cta-actions">
-      <a href="contact.html" class="btn-primary">Schedule a Free Consultation</a>
-      <a href="services.html" class="btn-outline">View Pricing</a>
+  <!-- ─── Stats ─────────────────────────────────────── -->
+  <section class="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item fade-up delay-1">
+          <div class="stat-number">10<span class="stat-accent">+</span></div>
+          <div class="stat-label">Years Commercial Construction Experience</div>
+        </div>
+        <div class="stat-item fade-up delay-2">
+          <div class="stat-number"><span class="stat-accent">$</span>150M</div>
+          <div class="stat-label">Largest Project Managed</div>
+        </div>
+        <div class="stat-item fade-up delay-3">
+          <div class="stat-number"><span class="stat-accent">$</span>20M</div>
+          <div class="stat-label">Max Project Budget We Serve</div>
+        </div>
+        <div class="stat-item fade-up delay-4">
+          <div class="stat-number">50<span class="stat-accent">mi</span></div>
+          <div class="stat-label">Service Radius from Claymont, DE</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Founder ───────────────────────────────────── -->
+  <section class="section founder">
+    <div class="container">
+      <div class="founder-grid">
+        <div class="founder-photo fade-up">
+          <img src="headshot.png" alt="Brennan O'Quinn, Founder" />
+        </div>
+        <div class="founder-text fade-up delay-2">
+          <p class="eyebrow">The Founder</p>
+          <h2>Built on the job site, not in a boardroom.</h2>
+          <p>Brennan O'Quinn is a Commercial Superintendent with over 10 years managing school, healthcare, and commercial projects ranging from $10M to $150M. He has sat at every table in construction: he knows the tactics, the contracts, and the shortcuts.</p>
+          <p>Born and raised in Newark, DE. A Delaware kid who has spent a career watching owners get outmaneuvered by contractors. Fieldstone Oversight exists to level that playing field.</p>
+          <div class="founder-tags">
+            <span class="tag">OSHA 30 Certified</span>
+            <span class="tag">AGC Certified</span>
+            <span class="tag">Commercial Superintendent</span>
+            <span class="tag">10+ Years Field Experience</span>
+            <span class="tag">Delaware Native</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CTA ───────────────────────────────────────── -->
+  <section class="cta">
+    <div class="container fade-up">
+      <h2>Not sure if you need oversight? Let's talk.</h2>
+      <p>A free 20-minute call is all it takes to find out if Fieldstone can protect your project and your investment.</p>
+      <div class="cta-actions">
+        <a href="contact.html" class="btn-white">Schedule a Free Consultation</a>
+        <a href="services.html" class="btn-white-outline">View Pricing</a>
+      </div>
     </div>
   </section>
 
   <!-- ─── Footer ────────────────────────────────────── -->
   <footer>
-    <div class="footer-top">
+    <div class="footer-grid">
       <div class="footer-brand">
         <img src="fieldstone_logo_light.svg" alt="Fieldstone Oversight" />
         <p>Independent construction oversight for property owners, developers, and investors in the Delaware Valley.</p>
       </div>
-      <div class="footer-links">
-        <h4>Navigation</h4>
+      <div class="footer-col">
+        <h4>Pages</h4>
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="services.html">Services</a></li>
@@ -725,12 +847,12 @@
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>
-      <div class="footer-contact">
+      <div class="footer-col">
         <h4>Contact</h4>
-        <p>
-          <a href="mailto:brennan@fieldstoneoversight.com">brennan@fieldstoneoversight.com</a><br /><br />
-          Delaware · Philadelphia<br />South Jersey
-        </p>
+        <ul>
+          <li><a href="mailto:brennan@fieldstoneoversight.com">brennan@fieldstoneoversight.com</a></li>
+          <li><a href="contact.html">Schedule a Consultation</a></li>
+        </ul>
       </div>
     </div>
     <div class="footer-bottom">
@@ -738,6 +860,19 @@
       <p>fieldstoneoversight.com</p>
     </div>
   </footer>
+
+  <!-- ─── Scroll Animations ─────────────────────────── -->
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
 
 </body>
 </html>
