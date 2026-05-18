@@ -124,6 +124,16 @@
       cursor: pointer; transition: background 0.2s, transform 0.2s; margin-top: 8px;
     }
     .btn-submit:hover { background: var(--blue-light); transform: translateY(-1px); }
+    .form-alt-action { display: flex; align-items: center; gap: 14px; margin-top: 14px; }
+    .form-alt-divider { font-size: 0.78rem; color: var(--text-dim); white-space: nowrap; }
+    .form-alt-action::before, .form-alt-action::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .btn-text-me {
+      white-space: nowrap; font-size: 0.88rem; font-weight: 600;
+      color: var(--blue-light); text-decoration: none;
+      padding: 8px 18px; border: 1px solid rgba(77,151,232,0.35);
+      border-radius: 6px; transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-text-me:hover { border-color: var(--blue-light); background: rgba(77,151,232,0.08); }
     .form-note { font-size: 0.78rem; color: var(--text-dim); text-align: center; margin-top: 14px; line-height: 1.6; }
     .success-message {
       display: none; background: rgba(45,125,210,0.12);
@@ -211,6 +221,7 @@
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="services.html">Services</a></li>
+      <li><a href="remote-owners.html">Remote Owners</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="contact.html" class="btn-nav active">Get Started</a></li>
     </ul>
@@ -263,6 +274,7 @@
             <option value="consultation-risk-memo">Consultation &amp; Risk Memo ($600)</option>
             <option value="bid-leveling">Bid Leveling ($1,500)</option>
             <option value="owner-rep">Owner Representation (Custom Quote)</option>
+            <option value="remote-owner-verification">Remote Owner / Out-of-Town Verification Visit</option>
             <option value="not-sure">Not Sure / General Inquiry</option>
           </select>
         </div>
@@ -282,6 +294,10 @@
         </div>
         <input type="text" name="_gotcha" style="display:none" />
         <button type="submit" class="btn-submit">Send Message</button>
+        <div class="form-alt-action">
+          <span class="form-alt-divider">or</span>
+          <a href="sms:+13027405066" class="btn-text-me">Text Me Directly</a>
+        </div>
         <p class="form-note">We respond within one business day. Your information is never shared or sold.</p>
         <div class="success-message" id="success-msg">Message sent. Brennan will be in touch with you shortly.</div>
       </form>
@@ -354,7 +370,8 @@
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="services.html">Services</a></li>
-          <li><a href="about.html">About</a></li>
+          <li><a href="remote-owners.html">Remote Owners</a></li>
+      <li><a href="about.html">About</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>
@@ -378,10 +395,42 @@
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
+    // Pre-select service if arriving from another page (e.g. remote-owners.html)
+    const preselect = sessionStorage.getItem('preselect_service') || new URLSearchParams(window.location.search).get('service');
+    if (preselect) {
+      const sel = document.getElementById('service');
+      if (sel) sel.value = preselect;
+      sessionStorage.removeItem('preselect_service');
+    }
+
     const form = document.getElementById('contact-form');
     const successMsg = document.getElementById('success-msg');
-    form.addEventListener('submit', function() {
-      setTimeout(function() { successMsg.style.display = 'block'; }, 800);
+    const submitBtn = form.querySelector('.btn-submit');
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      submitBtn.textContent = 'Sending...';
+      submitBtn.disabled = true;
+      try {
+        const resp = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (resp.ok) {
+          form.reset();
+          successMsg.style.display = 'block';
+          submitBtn.style.display = 'none';
+        } else {
+          submitBtn.textContent = 'Try Again';
+          submitBtn.disabled = false;
+          alert('Something went wrong. Please email brennan@fieldstoneoversight.com directly.');
+        }
+      } catch(err) {
+        submitBtn.textContent = 'Try Again';
+        submitBtn.disabled = false;
+        alert('Something went wrong. Please email brennan@fieldstoneoversight.com directly.');
+      }
     });
   </script>
 </body>

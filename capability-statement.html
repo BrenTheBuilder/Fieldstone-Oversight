@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Capability Statement | Fieldstone Oversight</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f4f5f7;
+      color: #111827;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* ── Page / Print setup ──────────────────── */
+    .page {
+      width: 8.5in;
+      min-height: 11in;
+      margin: 0 auto;
+      background: #ffffff;
+      display: grid;
+      grid-template-columns: 2.6in 1fr;
+      grid-template-rows: auto 1fr auto;
+    }
+
+    @media print {
+      body { background: #fff; }
+      .page { margin: 0; width: 100%; min-height: 100vh; }
+      .no-print { display: none; }
+    }
+
+    @media screen {
+      body { padding: 40px 20px; }
+    }
+
+    /* ── Print button ────────────────────────── */
+    .print-bar {
+      max-width: 8.5in; margin: 0 auto 20px;
+      display: flex; justify-content: flex-end; gap: 12px;
+    }
+    .print-bar button {
+      background: #1d4ed8; color: #fff;
+      border: none; border-radius: 6px;
+      padding: 10px 22px; font-size: 0.875rem; font-weight: 600;
+      cursor: pointer; font-family: 'Inter', sans-serif;
+    }
+    .print-bar button:hover { background: #2563eb; }
+
+    /* ── Header — full width ─────────────────── */
+    .header {
+      grid-column: 1 / -1;
+      background: #0F1923;
+      padding: 32px 36px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .header-left { display: flex; align-items: center; gap: 20px; }
+    .header-logo { height: 52px; width: auto; }
+    .header-divider { width: 1px; height: 44px; background: rgba(255,255,255,0.15); }
+    .header-brand h1 { font-size: 1.1rem; font-weight: 800; color: #ffffff; letter-spacing: -0.01em; }
+    .header-brand p { font-size: 0.78rem; color: rgba(255,255,255,0.55); margin-top: 3px; letter-spacing: 0.08em; text-transform: uppercase; }
+    .header-right { text-align: right; }
+    .header-right .doc-label {
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: #4d97e8;
+      border: 1px solid rgba(77,151,232,0.4); border-radius: 100px;
+      padding: 4px 12px; display: inline-block; margin-bottom: 8px;
+    }
+    .header-right .region { font-size: 0.8rem; color: rgba(255,255,255,0.6); }
+
+    /* ── Sidebar ─────────────────────────────── */
+    .sidebar {
+      background: #f8f9fc;
+      border-right: 1px solid #e5e7eb;
+      padding: 32px 28px;
+    }
+    .sidebar-section { margin-bottom: 32px; }
+    .sidebar-section:last-child { margin-bottom: 0; }
+    .sidebar-label {
+      font-size: 0.6rem; font-weight: 800; letter-spacing: 0.2em;
+      text-transform: uppercase; color: #2D7DD2; margin-bottom: 14px;
+      padding-bottom: 8px; border-bottom: 2px solid #2D7DD2;
+    }
+
+    /* Contact block */
+    .contact-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; }
+    .contact-icon { font-size: 0.9rem; flex-shrink: 0; margin-top: 1px; }
+    .contact-item p { font-size: 0.78rem; color: #374151; line-height: 1.5; }
+    .contact-item a { color: #1d4ed8; text-decoration: none; }
+
+    /* Service list */
+    .service-item { margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #e5e7eb; }
+    .service-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .service-name { font-size: 0.8rem; font-weight: 700; color: #111827; margin-bottom: 2px; }
+    .service-price { font-size: 0.75rem; color: #2D7DD2; font-weight: 600; }
+
+    /* Core competencies */
+    .competency { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 8px; font-size: 0.78rem; color: #374151; line-height: 1.4; }
+    .competency::before { content: '▸'; color: #2D7DD2; flex-shrink: 0; font-size: 0.7rem; margin-top: 2px; }
+
+    /* Region */
+    .region-tag {
+      display: inline-block; background: #eff6ff; color: #1d4ed8;
+      border: 1px solid #bfdbfe; border-radius: 4px;
+      font-size: 0.72rem; font-weight: 600; padding: 4px 10px;
+      margin: 3px 3px 3px 0;
+    }
+
+    /* ── Main content ────────────────────────── */
+    .main { padding: 32px 36px; }
+
+    /* Value prop strip */
+    .value-strip {
+      background: #0F1923; border-radius: 10px;
+      padding: 22px 26px; margin-bottom: 28px;
+    }
+    .value-strip p {
+      font-size: 0.92rem; color: rgba(255,255,255,0.85); line-height: 1.65;
+      font-weight: 400;
+    }
+    .value-strip p strong { color: #4d97e8; font-weight: 700; }
+
+    /* Section headings */
+    .section-head {
+      font-size: 0.62rem; font-weight: 800; letter-spacing: 0.2em;
+      text-transform: uppercase; color: #2D7DD2;
+      padding-bottom: 8px; border-bottom: 2px solid #2D7DD2;
+      margin-bottom: 16px;
+    }
+
+    /* Differentiators */
+    .diff-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 28px; }
+    .diff-card {
+      background: #f8f9fc; border: 1px solid #e5e7eb;
+      border-radius: 8px; padding: 16px 18px;
+      border-left: 3px solid #2D7DD2;
+    }
+    .diff-card h4 { font-size: 0.8rem; font-weight: 700; color: #111827; margin-bottom: 5px; }
+    .diff-card p { font-size: 0.75rem; color: #4b5563; line-height: 1.55; }
+
+    /* Who we work with */
+    .who-list { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 28px; }
+    .who-item {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 0.78rem; color: #374151; font-weight: 500;
+    }
+    .who-item::before { content: '✓'; color: #2D7DD2; font-weight: 800; flex-shrink: 0; }
+
+    /* Typical engagement table */
+    .engagement-table { width: 100%; border-collapse: collapse; margin-bottom: 28px; font-size: 0.78rem; }
+    .engagement-table th {
+      background: #0F1923; color: rgba(255,255,255,0.85);
+      padding: 10px 14px; text-align: left; font-weight: 700;
+      font-size: 0.68rem; letter-spacing: 0.08em;
+    }
+    .engagement-table th:first-child { border-radius: 6px 0 0 6px; }
+    .engagement-table th:last-child { border-radius: 0 6px 6px 0; }
+    .engagement-table td { padding: 9px 14px; border-bottom: 1px solid #e5e7eb; color: #374151; vertical-align: top; }
+    .engagement-table tr:last-child td { border-bottom: none; }
+    .engagement-table tr:nth-child(even) td { background: #f8f9fc; }
+    .price-cell { font-weight: 700; color: #2D7DD2; white-space: nowrap; }
+
+    /* Background */
+    .bg-block { margin-bottom: 28px; }
+    .bg-block p { font-size: 0.8rem; color: #374151; line-height: 1.65; margin-bottom: 10px; }
+
+    /* Stats row */
+    .stats-row { display: flex; gap: 0; margin-bottom: 0; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden; }
+    .stat-item { flex: 1; text-align: center; padding: 16px 10px; border-right: 1px solid #e5e7eb; }
+    .stat-item:last-child { border-right: none; }
+    .stat-num { font-size: 1.5rem; font-weight: 900; color: #0F1923; letter-spacing: -0.02em; }
+    .stat-unit { font-size: 0.7rem; font-weight: 600; color: #2D7DD2; }
+    .stat-label { font-size: 0.68rem; color: #6b7280; margin-top: 3px; line-height: 1.3; }
+
+    /* ── Footer ─────────────────────────────── */
+    .footer {
+      grid-column: 1 / -1;
+      background: #0F1923;
+      padding: 16px 36px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .footer p { font-size: 0.72rem; color: rgba(255,255,255,0.45); }
+    .footer a { color: #4d97e8; text-decoration: none; }
+    .footer .cta-text { font-size: 0.8rem; font-weight: 700; color: #4d97e8; }
+  </style>
+</head>
+<body>
+
+  <!-- Print button (screen only) -->
+  <div class="print-bar no-print">
+    <button onclick="window.print()">Download / Print PDF</button>
+  </div>
+
+  <div class="page">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <img src="Fieldstone_Logo_Transparent_Fresh.png" alt="Fieldstone Oversight" class="header-logo" />
+        <div class="header-divider"></div>
+        <div class="header-brand">
+          <h1>Fieldstone Oversight</h1>
+          <p>Construction Consulting &amp; Owner Representation</p>
+        </div>
+      </div>
+      <div class="header-right">
+        <div class="doc-label">Capability Statement</div>
+        <p class="region">Delaware · Philadelphia · South Jersey</p>
+      </div>
+    </header>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+      <div class="sidebar-section">
+        <div class="sidebar-label">Contact</div>
+        <div class="contact-item">
+          <span class="contact-icon">👤</span>
+          <p><strong>Brennan O'Quinn</strong><br>Principal</p>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">📧</span>
+          <p><a href="mailto:brennan@fieldstoneoversight.com">brennan@fieldstoneoversight.com</a></p>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">📱</span>
+          <p>(302) 740-5066</p>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">🌐</span>
+          <p><a href="https://fieldstoneoversight.com">fieldstoneoversight.com</a></p>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-label">Service Area</div>
+        <span class="region-tag">Delaware</span>
+        <span class="region-tag">Philadelphia</span>
+        <span class="region-tag">South Jersey</span>
+        <span class="region-tag">DE/PA/NJ Region</span>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-label">Services Offered</div>
+        <div class="service-item">
+          <div class="service-name">Residential Site Visit</div>
+          <div class="service-price">$250 flat</div>
+        </div>
+        <div class="service-item">
+          <div class="service-name">Commercial Site Visit</div>
+          <div class="service-price">$350 flat</div>
+        </div>
+        <div class="service-item">
+          <div class="service-name">Consultation &amp; Risk Memo</div>
+          <div class="service-price">$600 flat</div>
+        </div>
+        <div class="service-item">
+          <div class="service-name">Bid Leveling</div>
+          <div class="service-price">$1,500 flat</div>
+        </div>
+        <div class="service-item">
+          <div class="service-name">Pay App Review — Residential</div>
+          <div class="service-price">$500 flat</div>
+        </div>
+        <div class="service-item">
+          <div class="service-name">Pay App Review — Commercial</div>
+          <div class="service-price">$1,000 flat</div>
+        </div>
+        <div class="service-item">
+          <div class="service-name">Owner Representation</div>
+          <div class="service-price">Custom — priced by project</div>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-label">Core Competencies</div>
+        <div class="competency">Pay application review &amp; billing verification</div>
+        <div class="competency">Construction progress monitoring</div>
+        <div class="competency">Schedule review &amp; delay analysis</div>
+        <div class="competency">Bid leveling &amp; contractor evaluation</div>
+        <div class="competency">Contract review &amp; risk identification</div>
+        <div class="competency">Site documentation &amp; reporting</div>
+        <div class="competency">Remote property owner oversight</div>
+      </div>
+
+    </aside>
+
+    <!-- Main content -->
+    <main class="main">
+
+      <!-- Value prop -->
+      <div class="value-strip">
+        <p>Fieldstone Oversight provides <strong>independent construction oversight and owner representation</strong> for property owners, developers, and investors who need a professional construction expert in their corner — without the cost of a full in-house team. We protect owners from contractor overbilling, poor workmanship, and schedule manipulation on projects up to $20M.</p>
+      </div>
+
+      <!-- Background -->
+      <div class="section-head">Background</div>
+      <div class="bg-block">
+        <p>Fieldstone Oversight was founded by Brennan O'Quinn, a commercial construction superintendent with <strong>10+ years of field experience</strong> on projects ranging from $10M to $150M across school, healthcare, and commercial sectors in Delaware and the surrounding region.</p>
+        <p>That experience — managing subcontractors, reviewing pay applications, tracking schedules, and catching the problems that office-based consultants miss — is now available directly to smaller owners and investors who typically can't access this level of expertise.</p>
+        <div class="stats-row" style="margin-top:16px">
+          <div class="stat-item">
+            <div class="stat-num">10<span class="stat-unit">+</span></div>
+            <div class="stat-label">Years commercial field experience</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">$150<span class="stat-unit">M</span></div>
+            <div class="stat-label">Largest project managed</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">$20<span class="stat-unit">M</span></div>
+            <div class="stat-label">Max project budget served</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">24<span class="stat-unit">hr</span></div>
+            <div class="stat-label">Report turnaround after site visit</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Who we work with -->
+      <div class="section-head">Who We Work With</div>
+      <div class="who-list" style="margin-bottom:24px">
+        <div class="who-item">Small developers &amp; builders</div>
+        <div class="who-item">BRRRR &amp; fix-and-flip investors</div>
+        <div class="who-item">Out-of-town &amp; remote landlords</div>
+        <div class="who-item">Airbnb &amp; short-term rental hosts</div>
+        <div class="who-item">Business owners doing renovations</div>
+        <div class="who-item">Construction lenders &amp; private money</div>
+        <div class="who-item">Real estate attorneys (referrals)</div>
+        <div class="who-item">Property managers</div>
+      </div>
+
+      <!-- Differentiators -->
+      <div class="section-head">Why Fieldstone</div>
+      <div class="diff-grid">
+        <div class="diff-card">
+          <h4>Real Field Experience</h4>
+          <p>10+ years as a commercial superintendent — not an office PM or general consultant. We catch what others miss because we've managed it ourselves.</p>
+        </div>
+        <div class="diff-card">
+          <h4>Flat-Rate Pricing</h4>
+          <p>Know exactly what you're paying before we start. No hourly billing surprises — most engagements are one fixed fee with a clear deliverable.</p>
+        </div>
+        <div class="diff-card">
+          <h4>Written Deliverables</h4>
+          <p>Every engagement produces a documented report — not a verbal summary. You have a paper trail you can use in negotiations, disputes, or future reference.</p>
+        </div>
+        <div class="diff-card">
+          <h4>Independent &amp; Unbiased</h4>
+          <p>We work for the owner, period. No contractor relationships to protect, no referral fees — our only obligation is to give you an accurate picture.</p>
+        </div>
+      </div>
+
+      <!-- Typical engagement -->
+      <div class="section-head">Typical Engagements</div>
+      <table class="engagement-table">
+        <thead>
+          <tr>
+            <th>Engagement Type</th>
+            <th>What We Deliver</th>
+            <th>Ideal Client</th>
+            <th>Pricing</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Verification Visit</strong></td>
+            <td>Progress assessment + photo report within 24 hours</td>
+            <td>Remote owner before releasing payment</td>
+            <td class="price-cell">$250–$350</td>
+          </tr>
+          <tr>
+            <td><strong>Pay App Review</strong></td>
+            <td>Billing verification + written findings</td>
+            <td>Owner approving a contractor invoice</td>
+            <td class="price-cell">$500–$1,000</td>
+          </tr>
+          <tr>
+            <td><strong>Bid Leveling</strong></td>
+            <td>Scope gap analysis + written recommendation</td>
+            <td>Developer evaluating contractor bids</td>
+            <td class="price-cell">$1,500 flat</td>
+          </tr>
+          <tr>
+            <td><strong>Owner Representation</strong></td>
+            <td>Full oversight start to finish</td>
+            <td>Developer on a $500K–$20M project</td>
+            <td class="price-cell">Custom quote</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>Fieldstone Oversight &nbsp;·&nbsp; fieldstoneoversight.com &nbsp;·&nbsp; brennan@fieldstoneoversight.com &nbsp;·&nbsp; (302) 740-5066</p>
+      <p class="cta-text">Ready to get started? →</p>
+    </footer>
+
+  </div>
+
+</body>
+</html>

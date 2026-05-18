@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Out-of-Town Property Owner Oversight | Fieldstone Oversight</title>
+  <meta name="description" content="You hired a contractor. You can't be on site. We verify the work is done right before you release payment. Serving Delaware, Philadelphia, and South Jersey." />
+  <meta property="og:title" content="Remote Property Owner Oversight | Fieldstone Oversight" />
+  <meta property="og:description" content="Your contractor says the work is done. Is it? Independent verification for out-of-town landlords, Airbnb hosts, and remote investors." />
+  <meta property="og:image" content="https://fieldstoneoversight.com/og-image.png" />
+  <meta property="og:url" content="https://fieldstoneoversight.com/remote-owners.html" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://fieldstoneoversight.com/og-image.png" />
+
+  <!-- Schema markup for local service -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Remote Property Owner Oversight",
+    "provider": { "@type": "LocalBusiness", "name": "Fieldstone Oversight" },
+    "areaServed": ["Delaware", "Philadelphia", "South Jersey"],
+    "description": "On-site verification visits for out-of-town property owners, Airbnb hosts, and remote real estate investors.",
+    "offers": [
+      { "@type": "Offer", "name": "Residential Verification Visit", "price": "250", "priceCurrency": "USD" },
+      { "@type": "Offer", "name": "Pay Application Review", "price": "500", "priceCurrency": "USD" }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --dark:       #0F1923;
+      --dark-2:     #162030;
+      --dark-3:     #1e2d3d;
+      --blue:       #2D7DD2;
+      --blue-light: #4d97e8;
+      --blue-dim:   rgba(45,125,210,0.15);
+      --white:      #ffffff;
+      --off-white:  #f0f4f8;
+      --text-dim:   rgba(255,255,255,0.55);
+      --text-mid:   rgba(255,255,255,0.75);
+      --border:     rgba(255,255,255,0.08);
+      --red:        #e05c5c;
+      --green:      #3ecf8e;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--dark); color: var(--white); line-height: 1.6; overflow-x: hidden; }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ─── Nav ────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 0 5%; height: 72px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(15,25,35,0.85);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo img { height: 44px; width: auto; }
+    .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+    .nav-links a { font-size: 0.875rem; font-weight: 500; color: var(--text-mid); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--white); }
+    .nav-links .btn-nav {
+      background: var(--blue); color: var(--white);
+      padding: 10px 22px; border-radius: 6px;
+      font-weight: 600; font-size: 0.875rem; transition: background 0.2s;
+    }
+    .nav-links .btn-nav:hover { background: var(--blue-light); }
+
+    /* ─── Hero ───────────────────────────────── */
+    .hero {
+      padding: 160px 5% 100px;
+      background: var(--dark-2);
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 70% 50%, rgba(45,125,210,0.08), transparent);
+      pointer-events: none;
+    }
+    .hero-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .hero-eyebrow {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--blue-light); margin-bottom: 20px;
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 6px 16px; border: 1px solid rgba(45,125,210,0.4); border-radius: 100px;
+      background: rgba(45,125,210,0.1);
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 4vw, 3.6rem);
+      font-weight: 900; line-height: 1.08; letter-spacing: -0.03em;
+      color: var(--white); margin-bottom: 24px;
+    }
+    .hero h1 .accent { color: var(--blue-light); }
+    .hero-sub {
+      font-size: 1.1rem; color: var(--text-mid);
+      line-height: 1.75; margin-bottom: 36px; max-width: 480px;
+    }
+    .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--blue); color: var(--white);
+      padding: 14px 28px; border-radius: 8px;
+      font-weight: 700; font-size: 0.95rem;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--blue-light); transform: translateY(-1px); }
+    .btn-ghost {
+      border: 1px solid rgba(255,255,255,0.18); color: var(--text-mid);
+      padding: 14px 28px; border-radius: 8px;
+      font-weight: 600; font-size: 0.95rem;
+      transition: border-color 0.2s, color 0.2s;
+      display: inline-block;
+    }
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.4); color: var(--white); }
+
+    /* Hero stat strip */
+    .hero-stats {
+      display: flex; flex-direction: column; gap: 20px;
+    }
+    .stat-card {
+      background: var(--dark-3); border: 1px solid var(--border);
+      border-radius: 12px; padding: 24px 28px;
+    }
+    .stat-card .stat-num {
+      font-size: 2rem; font-weight: 900; color: var(--white);
+      letter-spacing: -0.03em; line-height: 1;
+    }
+    .stat-card .stat-num .unit { font-size: 1rem; font-weight: 600; color: var(--blue-light); margin-left: 4px; }
+    .stat-card .stat-label { font-size: 0.85rem; color: var(--text-dim); margin-top: 6px; }
+    .stat-card.highlight { border-color: rgba(45,125,210,0.4); background: rgba(45,125,210,0.07); }
+
+    /* ─── Section base ───────────────────────── */
+    .section { padding: 90px 5%; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--blue-light); margin-bottom: 14px;
+    }
+    .section-title {
+      font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+      font-weight: 800; color: var(--white); line-height: 1.2;
+      letter-spacing: -0.02em; margin-bottom: 14px;
+    }
+    .section-sub {
+      font-size: 1rem; color: var(--text-mid);
+      max-width: 580px; line-height: 1.75; margin-bottom: 50px;
+    }
+
+    /* ─── Who this is for ────────────────────── */
+    .who-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .who-card {
+      background: var(--dark-2); border: 1px solid var(--border);
+      border-radius: 14px; padding: 32px 28px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .who-card:hover { border-color: rgba(45,125,210,0.35); transform: translateY(-3px); }
+    .who-icon { font-size: 2rem; margin-bottom: 18px; }
+    .who-card h3 { font-size: 1.05rem; font-weight: 800; color: var(--white); margin-bottom: 10px; }
+    .who-card p { font-size: 0.9rem; color: var(--text-mid); line-height: 1.7; }
+
+    /* ─── Problem section ────────────────────── */
+    .problem-section { background: var(--dark-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+    .problem-list { display: flex; flex-direction: column; gap: 20px; }
+    .problem-item {
+      display: flex; gap: 16px; align-items: flex-start;
+      background: rgba(224,92,92,0.06); border: 1px solid rgba(224,92,92,0.15);
+      border-radius: 10px; padding: 20px 22px;
+    }
+    .problem-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 2px; }
+    .problem-item p { font-size: 0.92rem; color: var(--text-mid); line-height: 1.65; }
+    .problem-item strong { color: var(--white); display: block; margin-bottom: 4px; font-size: 0.95rem; }
+    .solution-list { display: flex; flex-direction: column; gap: 20px; }
+    .solution-item {
+      display: flex; gap: 16px; align-items: flex-start;
+      background: rgba(62,207,142,0.05); border: 1px solid rgba(62,207,142,0.15);
+      border-radius: 10px; padding: 20px 22px;
+    }
+    .solution-item p { font-size: 0.92rem; color: var(--text-mid); line-height: 1.65; }
+    .solution-item strong { color: var(--white); display: block; margin-bottom: 4px; font-size: 0.95rem; }
+
+    /* ─── Services ───────────────────────────── */
+    .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .service-card {
+      background: var(--dark-2); border: 1px solid var(--border);
+      border-radius: 14px; padding: 36px 32px;
+      display: flex; flex-direction: column;
+      transition: border-color 0.2s;
+    }
+    .service-card:hover { border-color: rgba(45,125,210,0.4); }
+    .service-card.featured { border-color: rgba(45,125,210,0.4); background: rgba(45,125,210,0.04); }
+    .service-tag {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--blue-light);
+      padding: 5px 12px; border: 1px solid rgba(45,125,210,0.35);
+      border-radius: 100px; display: inline-block; margin-bottom: 20px;
+      background: rgba(45,125,210,0.08); width: fit-content;
+    }
+    .service-card h3 { font-size: 1.25rem; font-weight: 800; color: var(--white); margin-bottom: 10px; }
+    .service-card .desc { font-size: 0.9rem; color: var(--text-mid); line-height: 1.7; margin-bottom: 24px; }
+    .service-card ul { list-style: none; margin-bottom: 28px; flex: 1; }
+    .service-card ul li {
+      font-size: 0.88rem; color: var(--text-mid); padding: 7px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: baseline; gap: 10px;
+    }
+    .service-card ul li::before { content: '→'; color: var(--blue-light); flex-shrink: 0; font-size: 0.8rem; }
+    .service-card ul li:last-child { border-bottom: none; }
+    .price-block { display: flex; align-items: baseline; gap: 8px; margin-bottom: 20px; }
+    .price { font-size: 2rem; font-weight: 900; color: var(--white); letter-spacing: -0.02em; }
+    .price span { font-size: 1rem; font-weight: 400; color: var(--text-dim); }
+    .service-cta {
+      display: block; text-align: center;
+      background: var(--blue); color: var(--white);
+      padding: 12px 24px; border-radius: 8px;
+      font-weight: 700; font-size: 0.88rem;
+      transition: background 0.2s;
+    }
+    .service-cta:hover { background: var(--blue-light); }
+
+    /* ─── How it works ───────────────────────── */
+    .how-section { background: var(--dark-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; position: relative; }
+    .steps::before {
+      content: '';
+      position: absolute; top: 28px; left: 14%; right: 14%;
+      height: 1px; background: var(--border);
+    }
+    .step { text-align: center; position: relative; }
+    .step-num {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: var(--dark-3); border: 1px solid rgba(45,125,210,0.4);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; font-weight: 800; color: var(--blue-light);
+      margin: 0 auto 20px; position: relative; z-index: 1;
+    }
+    .step h4 { font-size: 0.95rem; font-weight: 700; color: var(--white); margin-bottom: 10px; }
+    .step p { font-size: 0.85rem; color: var(--text-mid); line-height: 1.65; }
+
+    /* ─── FAQ ────────────────────────────────── */
+    .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .faq-item {
+      background: var(--dark-2); border: 1px solid var(--border);
+      border-radius: 12px; padding: 28px;
+    }
+    .faq-item h4 { font-size: 0.95rem; font-weight: 700; color: var(--white); margin-bottom: 10px; }
+    .faq-item p { font-size: 0.88rem; color: var(--text-mid); line-height: 1.7; }
+
+    /* ─── CTA Banner ─────────────────────────── */
+    .cta-banner {
+      background: linear-gradient(135deg, rgba(45,125,210,0.15) 0%, rgba(45,125,210,0.05) 100%);
+      border-top: 1px solid rgba(45,125,210,0.2);
+      border-bottom: 1px solid rgba(45,125,210,0.2);
+      padding: 80px 5%; text-align: center;
+    }
+    .cta-banner h2 {
+      font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 900;
+      letter-spacing: -0.02em; color: var(--white); margin-bottom: 16px;
+    }
+    .cta-banner p { font-size: 1rem; color: var(--text-mid); margin-bottom: 36px; max-width: 520px; margin-left: auto; margin-right: auto; }
+    .cta-banner .cta-pair { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* ─── Footer ─────────────────────────────── */
+    footer {
+      padding: 60px 5% 40px;
+      border-top: 1px solid var(--border);
+      background: var(--dark);
+    }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; margin-bottom: 48px; }
+    .footer-brand img { height: 40px; margin-bottom: 16px; }
+    .footer-brand p { font-size: 0.875rem; color: var(--text-dim); line-height: 1.7; max-width: 300px; }
+    .footer-col h4 { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 18px; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a { font-size: 0.875rem; color: var(--text-mid); transition: color 0.2s; }
+    .footer-col ul li a:hover { color: var(--white); }
+    .footer-bottom { max-width: 1200px; margin: 0 auto; padding-top: 28px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+    .footer-bottom p { font-size: 0.8rem; color: var(--text-dim); }
+
+    /* ─── Animations ─────────────────────────── */
+    .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .delay-1 { transition-delay: 0.1s; } .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; } .delay-4 { transition-delay: 0.4s; }
+
+    /* ─── Mobile ─────────────────────────────── */
+    @media (max-width: 768px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+      .hero-stats { flex-direction: row; flex-wrap: wrap; }
+      .stat-card { flex: 1; min-width: 140px; }
+      .who-grid { grid-template-columns: 1fr; }
+      .problem-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr 1fr; }
+      .steps::before { display: none; }
+      .faq-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; gap: 40px; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+      .nav-links { gap: 20px; }
+      .nav-links li:not(:last-child):not(:nth-last-child(2)) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <a href="index.html" class="nav-logo"><img src="Fieldstone_Logo_Transparent_Fresh.png" alt="Fieldstone Oversight" /></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" class="btn-nav">Get Started</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-eyebrow">Remote &amp; Out-of-Town Owners</div>
+        <h1>Your contractor says<br>the work is done.<br><span class="accent">Is it?</span></h1>
+        <p class="hero-sub">You own property in Delaware, Philadelphia, or South Jersey but you're not local. We go to the job site so you don't have to — and we tell you exactly what's done, what isn't, and whether you should release payment.</p>
+        <div class="hero-ctas">
+          <a href="contact.html?service=remote-owner-verification" class="btn-primary">Schedule a Verification Visit</a>
+          <a href="#services" class="btn-ghost">See Pricing</a>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-card highlight">
+          <div class="stat-num">$250<span class="unit">flat</span></div>
+          <div class="stat-label">Residential verification visit — one flat fee, no surprise billing</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">24<span class="unit">hr</span></div>
+          <div class="stat-label">Report with photos delivered to your inbox within 24 hours of the visit</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">10<span class="unit">yrs</span></div>
+          <div class="stat-label">Commercial construction experience — you get a real expert on your site, not a general inspector</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who This Is For -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">Who We Serve</div>
+      <h2 class="section-title">Built for remote property owners</h2>
+      <p class="section-sub">If you own property in Delaware, Philadelphia, or South Jersey and you're not local enough to verify work yourself, this service is for you.</p>
+      <div class="who-grid">
+        <div class="who-card fade-up">
+          <div class="who-icon">🏠</div>
+          <h3>Airbnb &amp; Short-Term Rental Hosts</h3>
+          <p>You manage a rental property remotely and hired a contractor to do renovations, repairs, or a full turnover. You need eyes on the ground before your next guest checks in and before you release payment.</p>
+        </div>
+        <div class="who-card fade-up delay-1">
+          <div class="who-icon">📈</div>
+          <h3>Out-of-State BRRRR &amp; Fix-and-Flip Investors</h3>
+          <p>You're running a renovation from a distance. You need someone to verify progress, confirm billing accuracy, and flag issues before they become cost overruns — without being there yourself.</p>
+        </div>
+        <div class="who-card fade-up delay-2">
+          <div class="who-icon">🔑</div>
+          <h3>Remote Landlords &amp; Rental Property Owners</h3>
+          <p>Your contractor said the unit is ready. Before you hand over keys or pay the final invoice, get an independent set of eyes on it — someone who knows what "done right" actually looks like.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem / Solution -->
+  <section class="section problem-section">
+    <div class="container">
+      <div class="problem-grid">
+        <div>
+          <div class="section-label">The Problem</div>
+          <h2 class="section-title">Remote owners are easy targets</h2>
+          <p class="section-sub">When you can't show up in person, contractors know it. That changes how they operate.</p>
+          <div class="problem-list">
+            <div class="problem-item fade-up">
+              <div class="problem-icon">⚠️</div>
+              <div>
+                <strong>Billing for work not done</strong>
+                <p>A contractor invoices for 80% completion. You're in another state. You pay it. But only 55% of the work is actually in place.</p>
+              </div>
+            </div>
+            <div class="problem-item fade-up delay-1">
+              <div class="problem-icon">⚠️</div>
+              <div>
+                <strong>Poor workmanship hidden until too late</strong>
+                <p>Shoddy tile work, improper waterproofing, or shortcuts on framing — issues that a quick photo doesn't catch and that show up months later as expensive problems.</p>
+              </div>
+            </div>
+            <div class="problem-item fade-up delay-2">
+              <div class="problem-icon">⚠️</div>
+              <div>
+                <strong>Scope creep and change order abuse</strong>
+                <p>Extras and change orders keep appearing. Without someone on-site to verify necessity and pricing, you have no leverage to push back.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="section-label">The Solution</div>
+          <h2 class="section-title">An expert on your site, reporting to you</h2>
+          <p class="section-sub">We show up, document everything, and give you a clear, honest picture of what's actually happening.</p>
+          <div class="solution-list">
+            <div class="solution-item fade-up">
+              <div class="problem-icon">✓</div>
+              <div>
+                <strong>Independent verification before you pay</strong>
+                <p>We assess actual percent complete against what you're being billed. You only pay for what's done — and you have the documentation to back it up.</p>
+              </div>
+            </div>
+            <div class="solution-item fade-up delay-1">
+              <div class="problem-icon">✓</div>
+              <div>
+                <strong>Professional eyes, not just photos</strong>
+                <p>10 years of commercial construction experience means we catch what a smartphone camera misses — workmanship issues, improper installations, safety concerns.</p>
+              </div>
+            </div>
+            <div class="solution-item fade-up delay-2">
+              <div class="problem-icon">✓</div>
+              <div>
+                <strong>A written report you can act on</strong>
+                <p>Not a verbal summary. A documented report with photos and findings, delivered within 24 hours — something you can use in negotiations or disputes.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section-label">Services &amp; Pricing</div>
+      <h2 class="section-title">Flat-rate pricing. No surprises.</h2>
+      <p class="section-sub">Every engagement is fixed price. You know exactly what you're paying before we start.</p>
+      <div class="services-grid">
+        <div class="service-card featured fade-up">
+          <span class="service-tag">Most Popular</span>
+          <h3>Residential Verification Visit</h3>
+          <p class="desc">We visit your residential property, document the current state of work, and deliver a written report with photos within 24 hours. Ideal for Airbnb hosts and landlords who need to verify completion before releasing payment.</p>
+          <ul>
+            <li>Full walkthrough with photo documentation</li>
+            <li>Progress assessment against contractor's claimed completion</li>
+            <li>Issue and deficiency log</li>
+            <li>Written summary report delivered within 24 hours</li>
+            <li>Available for discussion after report delivery</li>
+          </ul>
+          <div class="price-block">
+            <div class="price">$250<span> flat</span></div>
+          </div>
+          <a href="contact.html?service=remote-owner-verification" class="service-cta">Schedule a Visit</a>
+        </div>
+        <div class="service-card fade-up delay-1">
+          <span class="service-tag">Renovation &amp; Construction</span>
+          <h3>Commercial / Larger Renovation Visit</h3>
+          <p class="desc">For larger residential renovations or commercial properties. Includes a more detailed progress report, quality observations, and issue tracking across multiple trades.</p>
+          <ul>
+            <li>Full site walkthrough across all active scopes of work</li>
+            <li>Detailed progress documentation by area</li>
+            <li>Quality and safety observations</li>
+            <li>Issue and deficiency log with photos</li>
+            <li>Written findings report delivered within 24 hours</li>
+          </ul>
+          <div class="price-block">
+            <div class="price">$350<span> flat</span></div>
+          </div>
+          <a href="contact.html?service=remote-owner-verification" class="service-cta">Schedule a Visit</a>
+        </div>
+        <div class="service-card fade-up delay-2">
+          <span class="service-tag">Pay Application Review</span>
+          <h3>Contractor Invoice Verification</h3>
+          <p class="desc">Your contractor submitted a pay application or invoice. Before you approve payment, we review the billing against what's actually in place — and flag anything that doesn't add up.</p>
+          <ul>
+            <li>Review of contractor's pay application or invoice</li>
+            <li>On-site or remote assessment of claimed completion</li>
+            <li>Line-item comparison against work in place</li>
+            <li>Written findings and pay recommendation</li>
+          </ul>
+          <div class="price-block">
+            <div class="price">$500<span> flat</span></div>
+          </div>
+          <a href="contact.html?service=pay-app-residential" class="service-cta">Request a Review</a>
+        </div>
+        <div class="service-card fade-up delay-3">
+          <span class="service-tag">Ongoing Oversight</span>
+          <h3>Remote Owner Retainer</h3>
+          <p class="desc">For multi-month renovations or property owners managing multiple projects. Regular site visits, pay application reviews each billing cycle, and ongoing communication so you always know what's happening.</p>
+          <ul>
+            <li>Monthly site visit(s) with written reports</li>
+            <li>Pay application review each billing cycle</li>
+            <li>Contractor communication support</li>
+            <li>Direct access — call or text with questions</li>
+            <li>Scoped and priced per project</li>
+          </ul>
+          <div class="price-block">
+            <div class="price" style="font-size:1.4rem">Custom Quote</div>
+          </div>
+          <a href="contact.html?service=owner-rep" class="service-cta">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section how-section">
+    <div class="container">
+      <div class="section-label">The Process</div>
+      <h2 class="section-title">Simple from anywhere in the country</h2>
+      <p class="section-sub">You don't need to be local to get started. The whole process runs over phone, email, and text.</p>
+      <div class="steps">
+        <div class="step fade-up">
+          <div class="step-num">01</div>
+          <h4>Tell Us About Your Project</h4>
+          <p>Fill out the form or call us. Share the project address, what work is being done, and what you need verified.</p>
+        </div>
+        <div class="step fade-up delay-1">
+          <div class="step-num">02</div>
+          <h4>We Schedule the Visit</h4>
+          <p>We coordinate directly with your contractor to schedule access. You don't have to arrange anything on-site.</p>
+        </div>
+        <div class="step fade-up delay-2">
+          <div class="step-num">03</div>
+          <h4>We Go to the Site</h4>
+          <p>We conduct a thorough walkthrough, document everything with photos, and assess the state of work against your contractor's claims.</p>
+        </div>
+        <div class="step fade-up delay-3">
+          <div class="step-num">04</div>
+          <h4>You Get a Clear Report</h4>
+          <p>A written findings report — with photos — delivered within 24 hours. You decide whether to approve payment, withhold, or push back.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">Common Questions</div>
+      <h2 class="section-title">What remote owners ask us</h2>
+      <div class="faq-grid">
+        <div class="faq-item fade-up">
+          <h4>What areas do you cover?</h4>
+          <p>We serve Delaware, Philadelphia, and South Jersey. If your property is outside these areas, reach out anyway — we'll let you know if we can accommodate you.</p>
+        </div>
+        <div class="faq-item fade-up delay-1">
+          <h4>Do I need to be there for the visit?</h4>
+          <p>No. We coordinate access with your contractor. You'll receive the report by email with full photo documentation — no need to fly in or be on-site.</p>
+        </div>
+        <div class="faq-item fade-up delay-2">
+          <h4>What if my contractor won't allow access?</h4>
+          <p>A contractor refusing independent oversight is itself a red flag worth knowing about. We'll advise you on how to handle it — that kind of pushback is useful information.</p>
+        </div>
+        <div class="faq-item fade-up delay-3">
+          <h4>How is this different from a home inspector?</h4>
+          <p>A home inspector looks for defects in a finished building. We assess active construction — whether the work claimed is actually done, whether it meets standard practice, and whether the billing reflects reality. Different purpose, different expertise.</p>
+        </div>
+        <div class="faq-item fade-up">
+          <h4>Can you review a pay app without visiting the site?</h4>
+          <p>In some cases, yes — particularly for reviewing billing line items, schedule of values, and documentation. Reach out and describe your situation and we'll tell you what makes sense.</p>
+        </div>
+        <div class="faq-item fade-up delay-1">
+          <h4>How quickly can you get out there?</h4>
+          <p>Typically within 3–5 business days of booking. If you have a payment deadline approaching, let us know and we'll do our best to accommodate a faster turnaround.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="cta-banner">
+    <div class="container">
+      <h2>Don't approve payment until you know what's done.</h2>
+      <p>A $250 visit can prevent a $10,000 mistake. Get independent eyes on your project before you release funds.</p>
+      <div class="cta-pair">
+        <a href="contact.html?service=remote-owner-verification" class="btn-primary">Schedule a Verification Visit</a>
+        <a href="tel:+13027405066" class="btn-ghost">Call Brennan Directly</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="Fieldstone_Logo_Transparent_Fresh.png" alt="Fieldstone Oversight" />
+        <p>Independent construction oversight for property owners, developers, and investors in Delaware, Philadelphia, and South Jersey.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html">All Services</a></li>
+          <li><a href="remote-owners.html">Remote Owners</a></li>
+          <li><a href="services.html#pay-apps">Pay Application Review</a></li>
+          <li><a href="services.html#owner-rep">Owner Representation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="mailto:brennan@fieldstoneoversight.com">brennan@fieldstoneoversight.com</a></li>
+          <li><a href="contact.html">Schedule a Consultation</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Fieldstone Oversight. All rights reserved.</p>
+      <p>fieldstoneoversight.com</p>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Pre-select service in contact form if arriving from this page
+    const params = new URLSearchParams(window.location.search);
+    const svc = params.get('service');
+    if (svc) {
+      sessionStorage.setItem('preselect_service', svc);
+    }
+  </script>
+</body>
+</html>
