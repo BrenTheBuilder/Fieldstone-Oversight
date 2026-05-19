@@ -162,6 +162,7 @@
     .who-card {
       background: var(--dark-2); border: 1px solid var(--border);
       border-radius: 14px; padding: 32px 28px;
+      display: flex; flex-direction: column;
       transition: border-color 0.2s, transform 0.2s;
     }
     .who-card:hover { border-color: rgba(45,125,210,0.35); transform: translateY(-3px); }
@@ -171,21 +172,27 @@
 
     /* ─── Problem section ────────────────────── */
     .problem-section { background: var(--dark-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
-    .problem-list { display: flex; flex-direction: column; gap: 20px; }
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
+      column-gap: 60px;
+      row-gap: 20px;
+      align-items: stretch;
+    }
+    .problem-col-header { display: flex; flex-direction: column; gap: 10px; padding-bottom: 8px; }
     .problem-item {
       display: flex; gap: 16px; align-items: flex-start;
       background: rgba(224,92,92,0.06); border: 1px solid rgba(224,92,92,0.15);
-      border-radius: 10px; padding: 20px 22px;
+      border-radius: 10px; padding: 20px 22px; height: 100%;
     }
     .problem-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 2px; }
     .problem-item p { font-size: 0.92rem; color: var(--text-mid); line-height: 1.65; }
     .problem-item strong { color: var(--white); display: block; margin-bottom: 4px; font-size: 0.95rem; }
-    .solution-list { display: flex; flex-direction: column; gap: 20px; }
     .solution-item {
       display: flex; gap: 16px; align-items: flex-start;
       background: rgba(62,207,142,0.05); border: 1px solid rgba(62,207,142,0.15);
-      border-radius: 10px; padding: 20px 22px;
+      border-radius: 10px; padding: 20px 22px; height: 100%;
     }
     .solution-item p { font-size: 0.92rem; color: var(--text-mid); line-height: 1.65; }
     .solution-item strong { color: var(--white); display: block; margin-bottom: 4px; font-size: 0.95rem; }
@@ -383,60 +390,60 @@
   <section class="section problem-section">
     <div class="container">
       <div class="problem-grid">
-        <div>
+        <!-- Column headers -->
+        <div class="problem-col-header">
           <div class="section-label">The Problem</div>
           <h2 class="section-title">Remote owners are easy targets</h2>
           <p class="section-sub">When you can't show up in person, contractors know it. That changes how they operate.</p>
-          <div class="problem-list">
-            <div class="problem-item fade-up">
-              <div class="problem-icon">⚠️</div>
-              <div>
-                <strong>Billing for work not done</strong>
-                <p>A contractor invoices for 80% completion. You're in another state. You pay it. But only 55% of the work is actually in place.</p>
-              </div>
-            </div>
-            <div class="problem-item fade-up delay-1">
-              <div class="problem-icon">⚠️</div>
-              <div>
-                <strong>Poor workmanship hidden until too late</strong>
-                <p>Shoddy tile work, improper waterproofing, or shortcuts on framing — issues that a quick photo doesn't catch and that show up months later as expensive problems.</p>
-              </div>
-            </div>
-            <div class="problem-item fade-up delay-2">
-              <div class="problem-icon">⚠️</div>
-              <div>
-                <strong>Scope creep and change order abuse</strong>
-                <p>Extras and change orders keep appearing. Without someone on-site to verify necessity and pricing, you have no leverage to push back.</p>
-              </div>
-            </div>
-          </div>
         </div>
-        <div>
+        <div class="problem-col-header">
           <div class="section-label">The Solution</div>
           <h2 class="section-title">An expert on your site, reporting to you</h2>
           <p class="section-sub">We show up, document everything, and give you a clear, honest picture of what's actually happening.</p>
-          <div class="solution-list">
-            <div class="solution-item fade-up">
-              <div class="problem-icon">✓</div>
-              <div>
-                <strong>Independent verification before you pay</strong>
-                <p>We assess actual percent complete against what you're being billed. You only pay for what's done — and you have the documentation to back it up.</p>
-              </div>
-            </div>
-            <div class="solution-item fade-up delay-1">
-              <div class="problem-icon">✓</div>
-              <div>
-                <strong>Professional eyes, not just photos</strong>
-                <p>10 years of commercial construction experience means we catch what a smartphone camera misses — workmanship issues, improper installations, safety concerns.</p>
-              </div>
-            </div>
-            <div class="solution-item fade-up delay-2">
-              <div class="problem-icon">✓</div>
-              <div>
-                <strong>A written report you can act on</strong>
-                <p>Not a verbal summary. A documented report with photos and findings, delivered within 24 hours — something you can use in negotiations or disputes.</p>
-              </div>
-            </div>
+        </div>
+        <!-- Row 1 -->
+        <div class="problem-item fade-up">
+          <div class="problem-icon">⚠️</div>
+          <div>
+            <strong>Billing for work not done</strong>
+            <p>A contractor invoices for 80% completion. You're in another state. You pay it. But only 55% of the work is actually in place.</p>
+          </div>
+        </div>
+        <div class="solution-item fade-up">
+          <div class="problem-icon">✓</div>
+          <div>
+            <strong>Independent verification before you pay</strong>
+            <p>We assess actual percent complete against what you're being billed. You only pay for what's done — and you have the documentation to back it up.</p>
+          </div>
+        </div>
+        <!-- Row 2 -->
+        <div class="problem-item fade-up delay-1">
+          <div class="problem-icon">⚠️</div>
+          <div>
+            <strong>Poor workmanship hidden until too late</strong>
+            <p>Shoddy tile work, improper waterproofing, or shortcuts on framing — issues that a quick photo doesn't catch and that show up months later as expensive problems.</p>
+          </div>
+        </div>
+        <div class="solution-item fade-up delay-1">
+          <div class="problem-icon">✓</div>
+          <div>
+            <strong>Professional eyes, not just photos</strong>
+            <p>10 years of commercial construction experience means we catch what a smartphone camera misses — workmanship issues, improper installations, safety concerns.</p>
+          </div>
+        </div>
+        <!-- Row 3 -->
+        <div class="problem-item fade-up delay-2">
+          <div class="problem-icon">⚠️</div>
+          <div>
+            <strong>Scope creep and change order abuse</strong>
+            <p>Extras and change orders keep appearing. Without someone on-site to verify necessity and pricing, you have no leverage to push back.</p>
+          </div>
+        </div>
+        <div class="solution-item fade-up delay-2">
+          <div class="problem-icon">✓</div>
+          <div>
+            <strong>A written report you can act on</strong>
+            <p>Not a verbal summary. A documented report with photos and findings, delivered within 24 hours — something you can use in negotiations or disputes.</p>
           </div>
         </div>
       </div>
