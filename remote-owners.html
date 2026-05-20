@@ -67,7 +67,7 @@
     .nav-logo img { height: 44px; width: auto; }
     .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
     .nav-links a { font-size: 0.875rem; font-weight: 500; color: var(--text-mid); transition: color 0.2s; }
-    .nav-links a:hover { color: var(--white); }
+    .nav-links a:hover, .nav-links a.active { color: var(--white); }
     .nav-links .btn-nav {
       background: var(--blue); color: var(--white);
       padding: 10px 22px; border-radius: 6px;
@@ -328,6 +328,7 @@
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="services.html">Services</a></li>
+      <li><a href="remote-owners.html" class="active">Remote Owners</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="contact.html" class="btn-nav">Get Started</a></li>
     </ul>
