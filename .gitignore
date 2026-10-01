@@ -1,0 +1,7 @@
+node_modules/
+.env
+.env.*
+data/
+private-assets/
+*.zip
+.DS_Store

@@ -1,0 +1,16 @@
+{
+  "name": "fieldstone-oversight-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Fieldstone Oversight website with Stripe checkout and protected template downloads",
+  "engines": { "node": ">=24" },
+  "scripts": {
+    "start": "node server/index.js",
+    "test": "node --test test/*.test.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "stripe": "^18.0.0"
+  }
+}
