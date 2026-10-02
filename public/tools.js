@@ -25,7 +25,7 @@
         });
       });
       if (any) document.querySelectorAll('[data-soon-note]').forEach(function (el) {
-        if (el.classList.contains('notice')) el.hidden = true; else el.textContent = 'Secure checkout by Stripe. After payment you can download immediately, and a link is emailed to you.';
+        if (el.classList.contains('notice')) el.hidden = true; else { el.textContent = 'Secure checkout by Stripe. After payment you can download, and a link is emailed to you. By purchasing you agree to the '; var a = document.createElement('a'); a.href = 'terms.html'; a.textContent = 'Purchase Terms'; a.style.color = 'var(--blue-light)'; el.appendChild(a); el.appendChild(document.createTextNode(' (single-company license, 7-day refund).')); }
       });
     })
     .catch(function () { /* stay in "Coming soon" state */ });
